@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:Tema_1_TDA"
+      name = "Tema_1_TDA">
+      <FileRef
+         location = "group:tda_array/tda_array.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:templates/templates.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>
