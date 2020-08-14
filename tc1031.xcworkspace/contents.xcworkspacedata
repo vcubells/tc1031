@@ -2,6 +2,16 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Tema_2_Recursividad"
+      name = "Tema_2_Recursividad">
+      <FileRef
+         location = "group:potencia/potencia.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:factorial/factorial.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Tema_1_TDA"
       name = "Tema_1_TDA">
       <FileRef
