@@ -2,6 +2,13 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Tema_4_Bu&#x301;squeda"
+      name = "Tema_4_Bu&#x301;squeda">
+      <FileRef
+         location = "group:busqueda_secuencial/busqueda_secuencial.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Tema_2_Recursividad"
       name = "Tema_2_Recursividad">
       <FileRef
