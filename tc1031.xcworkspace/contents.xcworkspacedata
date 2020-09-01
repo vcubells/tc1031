@@ -2,6 +2,13 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Tema_5_Ordenamiento"
+      name = "Tema_5_Ordenamiento">
+      <FileRef
+         location = "group:ordenamiento_generico/ordenamiento_generico.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Tema_4_Bu&#x301;squeda"
       name = "Tema_4_Bu&#x301;squeda">
       <FileRef
