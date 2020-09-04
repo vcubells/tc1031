@@ -36,7 +36,7 @@ int main(int argc, const char * argv[]) {
     std::cout << std::endl;
     
     /* Ordenar el vector de números */
-    numeros = Ordenamiento<int>::burbuja(numeros, Ordenamiento<int>::asc);
+    numeros = Ordenamiento<int>::insercion(numeros, Ordenamiento<int>::asc);
     
     /* Imprimir el vector ordenado */
     std::copy(numeros.begin(), numeros.end(), std::ostream_iterator<int>(std::cout, " "));
@@ -61,7 +61,7 @@ int main(int argc, const char * argv[]) {
     std::cout << std::endl;
     
     /* Ordenar el vector de números */
-    numeros_f = Ordenamiento<float>::burbuja(numeros_f, Ordenamiento<float>::desc);
+    numeros_f = Ordenamiento<float>::seleccion(numeros_f, Ordenamiento<float>::desc);
     
     /* Imprimir el vector ordenado */
     std::copy(numeros_f.begin(), numeros_f.end(), std::ostream_iterator<float>(std::cout, " "));
