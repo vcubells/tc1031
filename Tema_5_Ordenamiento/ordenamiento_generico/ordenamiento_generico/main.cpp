@@ -58,6 +58,37 @@ void ordena(
     std::cout << std::endl << std::endl;
 }
 
+template <typename T>
+void ordena_recursivo(
+            T(* genera)(),
+            std::vector<T>(* algoritmo)(std::vector<T>, int, int, bool(*)(T,T)),
+            bool(* criterio)(T,T)
+            )
+{
+    /* Definir cantidad de elementos */
+    const int n = 10;
+    
+    /* Vector de elementos */
+    std::vector<T> elementos(n);
+    
+    /* Generar un vector de elementos aleatorios */
+    std::generate(elementos.begin(), elementos.end(), genera);
+    
+    /* Imprimir el vector original */
+    std::copy(elementos.begin(), elementos.end(), std::ostream_iterator<T>(std::cout, " "));
+    
+    std::cout << std::endl;
+    
+    /* Ordenar el vector de números */
+    elementos = algoritmo(elementos, 0, n-1, criterio);
+    
+    /* Imprimir el vector ordenado */
+    std::copy(elementos.begin(), elementos.end(), std::ostream_iterator<T>(std::cout, " "));
+    
+    std::cout << std::endl << std::endl;
+}
+
+
 int main(int argc, const char * argv[]) {
     
     /* Establecer la semilla del generador */
@@ -77,6 +108,11 @@ int main(int argc, const char * argv[]) {
     std::cout << "- Ordenamiento de personas por el nombre -" << std::endl;
     
     ordena<Persona>(genera_persona, Ordenamiento<Persona>::seleccion, Ordenamiento<Persona>::asc);
+    
+    /* Ordenar números enteros */
+      std::cout << "- Ordenamiento de números enteros con QuickSort -" << std::endl;
+    
+    ordena_recursivo<int>(genera_int, Ordenamiento<int>::quicksort, Ordenamiento<int>::asc);
     
     return 0;
 }

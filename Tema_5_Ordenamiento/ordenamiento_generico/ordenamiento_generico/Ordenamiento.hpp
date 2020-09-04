@@ -19,9 +19,10 @@ public:
     static std::vector<T> insercion(std::vector<T>, bool(*)(T,T));
     static std::vector<T> seleccion(std::vector<T>, bool(*)(T,T));
     
+    static std::vector<T> quicksort(std::vector<T>, int, int, bool(*)(T,T));
+    
     static bool asc(T,T);
     static bool desc(T,T);
-    
 };
 
 template <class T>
@@ -98,5 +99,40 @@ std::vector<T> Ordenamiento<T>::seleccion(std::vector<T> e, bool compara (T,T))
     
     return e;
 }
+
+template <class T>
+std::vector<T> Ordenamiento<T>::quicksort(std::vector<T> e, int primero, int ultimo, bool compara (T, T))
+{
+    int izquierdo = primero;
+    int derecho = ultimo;
+    
+    //Se selecciona pivote
+    T pivote = e[primero];
+    
+    if ( primero < ultimo) // Paso base
+    {
+        // particion
+        while ( izquierdo < derecho)
+        {
+            while ( (izquierdo < derecho) && !compara(pivote, e[izquierdo])) izquierdo++; // <=
+            while ( compara(pivote, e[derecho]) ) derecho--; // >
+            
+            if ( izquierdo < derecho) // se intercambian los contenidos
+            {
+                std::swap(e[izquierdo], e[derecho]);
+            }
+        }
+        
+        // Se intercambia el pivote con el elemento de la posición derecha
+        std::swap(e[primero], e[derecho]);
+        
+        // Paso recursivo
+        e = quicksort ( e, primero, derecho-1, compara);
+        e = quicksort ( e, izquierdo, ultimo, compara);
+    }
+    
+    return e;
+}
+
 
 #endif /* Ordenamiento_hpp */
