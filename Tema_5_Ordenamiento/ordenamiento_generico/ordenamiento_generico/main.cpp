@@ -9,65 +9,75 @@
 #include <iostream>
 #include <algorithm>
 #include "Ordenamiento.hpp"
+#include "Persona.hpp"
+
+int genera_int()
+{
+    return rand() % 100;
+}
+
+float genera_float()
+{
+    return rand() % 100 * 0.5;
+}
+
+Persona genera_persona()
+{
+    int edad = rand() % 100;
+    std::string nombre = "Persona " + std::to_string(edad);
+    return Persona(nombre, edad);
+}
+
+template <typename T>
+void ordena(
+            T(* genera)(),
+            std::vector<T>(* algoritmo)(std::vector<T>, bool(*)(T,T)),
+            bool(* criterio)(T,T)
+            )
+{
+    /* Definir cantidad de elementos */
+    const int n = 10;
+    
+    /* Vector de elementos */
+    std::vector<T> elementos(n);
+    
+    /* Generar un vector de elementos aleatorios */
+    std::generate(elementos.begin(), elementos.end(), genera);
+    
+    /* Imprimir el vector original */
+    std::copy(elementos.begin(), elementos.end(), std::ostream_iterator<T>(std::cout, " "));
+    
+    std::cout << std::endl;
+    
+    /* Ordenar el vector de números */
+    elementos = algoritmo(elementos, criterio);
+    
+    /* Imprimir el vector ordenado */
+    std::copy(elementos.begin(), elementos.end(), std::ostream_iterator<T>(std::cout, " "));
+    
+    std::cout << std::endl << std::endl;
+}
 
 int main(int argc, const char * argv[]) {
     
     /* Establecer la semilla del generador */
     srand((unsigned int) time(nullptr));
     
-    /* Definir cantidad de elementos */
-    const int n = 10;
-    
-    /*
-    * Ordenar números enteros
-    */
-    
+    /* Ordenar números enteros */
     std::cout << "- Ordenamiento de números enteros -" << std::endl;
+  
+    ordena<int>(genera_int, Ordenamiento<int>::burbuja, Ordenamiento<int>::asc);
     
-    /* Definir un vector de enteros */
-    std::vector<int> numeros(n);
-    
-    /* Generar un vector de números enteros utilizando una función Lambda */
-    std::generate(numeros.begin(), numeros.end(), [](){return rand() % 100;});
-    
-    /* Imprimir el vector original */
-    std::copy(numeros.begin(), numeros.end(), std::ostream_iterator<int>(std::cout, " "));
-    
-    std::cout << std::endl;
-    
-    /* Ordenar el vector de números */
-    numeros = Ordenamiento<int>::insercion(numeros, Ordenamiento<int>::asc);
-    
-    /* Imprimir el vector ordenado */
-    std::copy(numeros.begin(), numeros.end(), std::ostream_iterator<int>(std::cout, " "));
-    
-    std::cout << std::endl << std::endl;
-    
-    /*
-     * Ordenar números en punto flotante
-     */
-    
+    /* Ordenar números en punto flotante */
     std::cout << "- Ordenamiento de números flotantes -" << std::endl;
     
-    /* Definir un vector de flotantes */
-    std::vector<float> numeros_f(n);
+    ordena<float>(genera_float, Ordenamiento<float>::insercion, Ordenamiento<float>::desc);
     
-    /* Generar un vector de números enteros utilizando una función Lambda */
-    std::generate(numeros_f.begin(), numeros_f.end(), [](){return rand() % 100 * 0.5;});
+    /* Ordenar personas por el nombre */
+    std::cout << "- Ordenamiento de personas por el nombre -" << std::endl;
     
-    /* Imprimir el vector original */
-    std::copy(numeros_f.begin(), numeros_f.end(), std::ostream_iterator<float>(std::cout, " "));
+    ordena<Persona>(genera_persona, Ordenamiento<Persona>::seleccion, Ordenamiento<Persona>::asc);
     
-    std::cout << std::endl;
-    
-    /* Ordenar el vector de números */
-    numeros_f = Ordenamiento<float>::seleccion(numeros_f, Ordenamiento<float>::desc);
-    
-    /* Imprimir el vector ordenado */
-    std::copy(numeros_f.begin(), numeros_f.end(), std::ostream_iterator<float>(std::cout, " "));
-    
-    std::cout << std::endl << std::endl;
-     
     return 0;
 }
 
