@@ -10,11 +10,19 @@
 
 bool Persona::operator<(Persona & persona)
 {
+    if (criterio == 'e') {
+        return edad < persona.edad;
+    }
+    
     return nombre < persona.nombre;
 }
 
 bool Persona::operator>(Persona & persona)
 {
+    if (criterio == 'e') {
+        return edad > persona.edad;
+    }
+    
     return nombre > persona.nombre;
 }
 

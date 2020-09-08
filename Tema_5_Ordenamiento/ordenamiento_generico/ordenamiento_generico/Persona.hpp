@@ -15,9 +15,17 @@ class Persona {
 private:
     std::string nombre;
     int edad;
+    
+    char criterio = 'n'; // 'n' -> nombre. 'e' -> edad
+    
 public:
     Persona():Persona("",0) {}
     Persona(std::string _nombre, int _edad) : nombre(_nombre), edad(_edad) {}
+    
+    void setCriterio(char value)
+    {
+        criterio = value;
+    }
     
     bool operator<(Persona & persona);
     bool operator>(Persona & persona);

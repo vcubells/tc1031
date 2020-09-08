@@ -23,9 +23,11 @@ float genera_float()
 
 Persona genera_persona()
 {
-    int edad = rand() % 100;
+    int edad = rand() % 20;
     std::string nombre = "Persona " + std::to_string(edad);
-    return Persona(nombre, edad);
+    Persona p = Persona(nombre, edad);
+    //p.setCriterio('e');
+    return p;
 }
 
 template <typename T>
