@@ -8,21 +8,23 @@
 
 #include "Persona.hpp"
 
+bool Persona::edad_asc(Persona a, Persona b)
+{
+    return a.edad < b.edad;
+}
+
+bool Persona::edad_desc(Persona a, Persona b)
+{
+    return a.edad > b.edad;
+}
+
 bool Persona::operator<(Persona & persona)
 {
-    if (criterio == 'e') {
-        return edad < persona.edad;
-    }
-    
     return nombre < persona.nombre;
 }
 
 bool Persona::operator>(Persona & persona)
 {
-    if (criterio == 'e') {
-        return edad > persona.edad;
-    }
-    
     return nombre > persona.nombre;
 }
 

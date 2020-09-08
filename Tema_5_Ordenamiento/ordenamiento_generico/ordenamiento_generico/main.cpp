@@ -25,9 +25,7 @@ Persona genera_persona()
 {
     int edad = rand() % 20;
     std::string nombre = "Persona " + std::to_string(edad);
-    Persona p = Persona(nombre, edad);
-    //p.setCriterio('e');
-    return p;
+    return Persona(nombre, edad);
 }
 
 template <typename T>
@@ -107,7 +105,7 @@ int main(int argc, const char * argv[]) {
     /* Ordenar personas por el nombre */
     std::cout << "- Ordenamiento de personas por el nombre -" << std::endl;
     
-    ordena<Persona>(genera_persona, Ordenamiento<Persona>::seleccion, Ordenamiento<Persona>::asc);
+    ordena<Persona>(genera_persona, Ordenamiento<Persona>::seleccion, Persona::edad_desc);
     
     /* Ordenar números enteros con QuickSort */
       std::cout << "- Ordenamiento de números enteros con QuickSort -" << std::endl;
