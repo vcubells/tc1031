@@ -29,11 +29,7 @@ Persona genera_persona()
 }
 
 template <typename T>
-void ordena(
-            T(* genera)(),
-            std::vector<T>(* algoritmo)(std::vector<T>, bool(*)(T,T)),
-            bool(* criterio)(T,T)
-            )
+std::vector<T> crea_vector(T(* genera)())
 {
     /* Definir cantidad de elementos */
     const int n = 10;
@@ -48,6 +44,19 @@ void ordena(
     std::copy(elementos.begin(), elementos.end(), std::ostream_iterator<T>(std::cout, " "));
     
     std::cout << std::endl;
+    
+    return elementos;
+}
+
+template <typename T>
+void ordena(
+            T(* genera)(),
+            std::vector<T>(* algoritmo)(std::vector<T>, bool(*)(T,T)),
+            bool(* criterio)(T,T)
+            )
+{
+    /* Genera un vector */
+    std::vector<T> elementos = crea_vector(genera);
     
     /* Ordenar el vector de números */
     elementos = algoritmo(elementos, criterio);
@@ -59,28 +68,17 @@ void ordena(
 }
 
 template <typename T>
-void ordena_recursivo(
+void ordena(
             T(* genera)(),
             std::vector<T>(* algoritmo)(std::vector<T>, int, int, bool(*)(T,T)),
             bool(* criterio)(T,T)
             )
 {
-    /* Definir cantidad de elementos */
-    const int n = 10;
-    
-    /* Vector de elementos */
-    std::vector<T> elementos(n);
-    
-    /* Generar un vector de elementos aleatorios */
-    std::generate(elementos.begin(), elementos.end(), genera);
-    
-    /* Imprimir el vector original */
-    std::copy(elementos.begin(), elementos.end(), std::ostream_iterator<T>(std::cout, " "));
-    
-    std::cout << std::endl;
-    
+    /* Genera un vector */
+    std::vector<T> elementos = crea_vector(genera);
+
     /* Ordenar el vector de números */
-    elementos = algoritmo(elementos, 0, n-1, criterio);
+    elementos = algoritmo(elementos, 0, elementos.size()-1, criterio);
     
     /* Imprimir el vector ordenado */
     std::copy(elementos.begin(), elementos.end(), std::ostream_iterator<T>(std::cout, " "));
@@ -109,10 +107,15 @@ int main(int argc, const char * argv[]) {
     
     ordena<Persona>(genera_persona, Ordenamiento<Persona>::seleccion, Ordenamiento<Persona>::asc);
     
-    /* Ordenar números enteros */
+    /* Ordenar números enteros con QuickSort */
       std::cout << "- Ordenamiento de números enteros con QuickSort -" << std::endl;
     
-    ordena_recursivo<int>(genera_int, Ordenamiento<int>::quicksort, Ordenamiento<int>::asc);
+    ordena<int>(genera_int, Ordenamiento<int>::quicksort, Ordenamiento<int>::asc);
+    
+    /* Ordenar números en punto flotante con MergeSort */
+    std::cout << "- Ordenamiento de números flotantes con MergeSort -" << std::endl;
+    
+    ordena<float>(genera_float, Ordenamiento<float>::mergesort, Ordenamiento<float>::desc);
     
     return 0;
 }

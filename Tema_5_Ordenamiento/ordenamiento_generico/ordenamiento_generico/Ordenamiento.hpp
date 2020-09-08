@@ -20,9 +20,13 @@ public:
     static std::vector<T> seleccion(std::vector<T>, bool(*)(T,T));
     
     static std::vector<T> quicksort(std::vector<T>, int, int, bool(*)(T,T));
+    static std::vector<T> mergesort(std::vector<T>, int, int, bool(*)(T,T));
     
     static bool asc(T,T);
     static bool desc(T,T);
+    
+private:
+    static std::vector<T> merge(std::vector<T>, int, int, int, bool (*) (T, T));
 };
 
 template <class T>
@@ -134,5 +138,45 @@ std::vector<T> Ordenamiento<T>::quicksort(std::vector<T> e, int primero, int ult
     return e;
 }
 
+
+template <class T>
+std::vector<T> Ordenamiento<T>::mergesort(std::vector<T> e, int l, int n, bool compara (T, T))
+{
+    int m = (n + l) / 2;
+    
+    if (n > l)
+    {
+        e = mergesort (e, l, m, compara);
+        e = mergesort (e, m+1, n, compara);
+        e = merge (e, l, m, n, compara);
+    }
+    
+    return e;
+}
+
+template <class T>
+std::vector<T> Ordenamiento<T>::merge(std::vector<T> e, int l, int m, int n, bool compara (T, T))
+{
+    int i, j, k;
+    
+    /* Definir un vector auxiliar */
+    std::vector<T> aux(e.size());
+    
+    /* Copiar elementos al vector auxiliar */
+    for(i=m+1;i>l;i--)
+        aux[i-1] = e[i-1];
+    
+    for (j=m; j<n; j++)
+        aux[n+m-j] = e[j+1];
+    
+    /* Proceso de mezcla en el orden especificado */
+    for(k=l;k<=n;k++)
+        if (!compara(aux[i], aux[j])) // <
+            e[k] = aux[i++];
+        else
+            e[k] = aux[j--];
+    
+    return e;
+}
 
 #endif /* Ordenamiento_hpp */
