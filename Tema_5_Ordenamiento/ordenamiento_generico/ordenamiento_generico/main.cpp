@@ -67,26 +67,6 @@ void ordena(
     std::cout << std::endl << std::endl;
 }
 
-template <typename T>
-void ordena(
-            T(* genera)(),
-            std::vector<T>(* algoritmo)(std::vector<T>, int, int, bool(*)(T,T)),
-            bool(* criterio)(T,T)
-            )
-{
-    /* Genera un vector */
-    std::vector<T> elementos = crea_vector(genera);
-
-    /* Ordenar el vector de números */
-    elementos = algoritmo(elementos, 0, elementos.size()-1, criterio);
-    
-    /* Imprimir el vector ordenado */
-    std::copy(elementos.begin(), elementos.end(), std::ostream_iterator<T>(std::cout, " "));
-    
-    std::cout << std::endl << std::endl;
-}
-
-
 int main(int argc, const char * argv[]) {
     
     /* Establecer la semilla del generador */
@@ -119,4 +99,3 @@ int main(int argc, const char * argv[]) {
     
     return 0;
 }
-

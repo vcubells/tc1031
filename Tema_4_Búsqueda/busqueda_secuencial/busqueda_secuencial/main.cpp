@@ -8,24 +8,8 @@
 
 #include <iostream>
 #include <vector>
-
-template <typename T>
-int busqueda(std::vector<T> elementos, T valor)
-{
-    int i = 0;
-    int encontrado = -1;
-    
-    long int size = elementos.size();
-    
-    while (encontrado == -1 && i < size) {
-        if (elementos[i] == valor) {
-            encontrado = i;
-        }
-        ++i;
-    }
-    
-    return encontrado;
-}
+#include "../../../Tema_5_Ordenamiento/ordenamiento_generico/ordenamiento_generico/Ordenamiento.hpp"
+#include "Busqueda.hpp"
 
 int genera_int()
 {
@@ -38,20 +22,40 @@ float genera_float()
 }
 
 template <typename T>
-void buscar(T(* genera)())
+std::vector<T> crea_vector(T(* genera)())
 {
+    /* Definir cantidad de elementos */
+    const int n = 10;
+    
     /* Vector de elementos */
-    std::vector<T> elementos;
+    std::vector<T> elementos(n);
     
-    /* Definir tamaño del vector */
-    const int N = 10;
+    /* Generar un vector de elementos aleatorios */
+    std::generate(elementos.begin(), elementos.end(), genera);
     
-    /* Generar números aleatorios */
-    for (int i = 0; i < N; ++i) {
-        elementos.push_back(genera());
-        std::cout << elementos.back() << ", ";
+    return elementos;
+}
+
+template <typename T>
+void buscar(
+            T(* genera)(),
+            int (* algoritmo)(std::vector<T>, T),
+            bool ordena = false
+            )
+{
+    /* Genera un vector */
+    std::vector<T> elementos = crea_vector(genera);
+    
+    /* Ordenar vector para búsqueda binaria */
+    if (ordena)
+    {
+        /* Ordenar el vector de números */
+        elementos = Ordenamiento<T>::mergesort(elementos, Ordenamiento<T>::asc);
     }
     
+    /* Imprimir el vector  */
+    std::copy(elementos.begin(), elementos.end(), std::ostream_iterator<T>(std::cout, " "));
+        
     std::cout << std::endl;
     
     /* Obtener elemento a buscar */
@@ -59,15 +63,17 @@ void buscar(T(* genera)())
     std::cout << "¿Qué elemento quieres buscar?: ";
     std::cin >> valor;
     
-    int result = busqueda(elementos, valor);
+    int resultado = algoritmo(elementos, valor);
     
-    if (result == -1) {
+    if (resultado == -1) {
         std::cout << "El valor buscado no se encuentra en el vector" << std::endl;
     }
     else {
-        std::cout << "El valor buscado se encuentra en la posición " << result + 1 << std::endl;
+        std::cout << "El valor buscado se encuentra en la posición " << resultado + 1 << std::endl;
     
     }
+    
+    std::cout << std::endl;
 }
 
 int main(int argc, const char * argv[]) {
@@ -75,11 +81,11 @@ int main(int argc, const char * argv[]) {
     /* Definir semilla del generador random */
     srand((int) time(nullptr));
     
-    /* Búsqueda de números enteros */
-    buscar<int>(genera_int);
+    /* Búsqueda secuencia de números enteros */
+    buscar<int>(genera_int, Busqueda<int>::busquedaSecuencial);
     
-    /* Búsqueda de números punto flotante */
-    buscar<float>(genera_float);
+    /* Búsqueda binaria de números punto flotante */
+    buscar<float>(genera_float, Busqueda<float>::busquedaBinaria, true);
     
     return 0;
 }

@@ -19,7 +19,10 @@ public:
     static std::vector<T> insercion(std::vector<T>, bool(*)(T,T));
     static std::vector<T> seleccion(std::vector<T>, bool(*)(T,T));
     
+    static std::vector<T> quicksort(std::vector<T>, bool(*)(T,T));
     static std::vector<T> quicksort(std::vector<T>, int, int, bool(*)(T,T));
+    
+    static std::vector<T> mergesort(std::vector<T>, bool(*)(T,T));
     static std::vector<T> mergesort(std::vector<T>, int, int, bool(*)(T,T));
     
     static bool asc(T,T);
@@ -105,6 +108,13 @@ std::vector<T> Ordenamiento<T>::seleccion(std::vector<T> e, bool compara (T,T))
 }
 
 template <class T>
+std::vector<T> Ordenamiento<T>::quicksort(std::vector<T> e, bool compara (T, T))
+{
+    int  size = (int) e.size() - 1;
+    return quicksort(e, 0, size, compara);
+}
+
+template <class T>
 std::vector<T> Ordenamiento<T>::quicksort(std::vector<T> e, int primero, int ultimo, bool compara (T, T))
 {
     int izquierdo = primero;
@@ -138,6 +148,12 @@ std::vector<T> Ordenamiento<T>::quicksort(std::vector<T> e, int primero, int ult
     return e;
 }
 
+template <class T>
+std::vector<T> Ordenamiento<T>::mergesort(std::vector<T> e, bool compara (T, T))
+{
+    int size = (int) e.size() - 1;
+    return mergesort(e, 0, size, compara);
+}
 
 template <class T>
 std::vector<T> Ordenamiento<T>::mergesort(std::vector<T> e, int l, int n, bool compara (T, T))
@@ -171,7 +187,7 @@ std::vector<T> Ordenamiento<T>::merge(std::vector<T> e, int l, int m, int n, boo
     
     /* Proceso de mezcla en el orden especificado */
     for(k=l;k<=n;k++)
-        if (!compara(aux[i], aux[j])) // <
+        if (compara(aux[i], aux[j])) // <
             e[k] = aux[i++];
         else
             e[k] = aux[j--];
