@@ -39,7 +39,7 @@ std::vector<Libro> Biblioteca::eliminarLibro(std::string titulo)
 
 std::vector<Libro> Biblioteca::compara(Libro buscar, bool(comparador)(Libro, Libro))
 {
-   int i = 0;
+    int i = 0;
     
     std::vector<Libro> encontrados;
     
