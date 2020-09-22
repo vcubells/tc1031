@@ -2,6 +2,23 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Tema_6_Apuntadores"
+      name = "Tema_6_Apuntadores">
+      <FileRef
+         location = "group:memoria_dina&#x301;mica/memoria_dina&#x301;mica.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:aritme&#x301;tica_apuntadores/aritme&#x301;tica_apuntadores.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:apuntadores/apuntadores.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Tema_7_Estructuras lineales"
+      name = "Tema_7_Estructuras lineales">
+   </Group>
+   <Group
       location = "group:Retos"
       name = "Retos">
       <FileRef
