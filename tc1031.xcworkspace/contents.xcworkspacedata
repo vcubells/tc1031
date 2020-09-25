@@ -17,6 +17,9 @@
    <Group
       location = "group:Tema_7_Estructuras lineales"
       name = "Tema_7_Estructuras lineales">
+      <FileRef
+         location = "group:LinkedList/LinkedList.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Retos"
