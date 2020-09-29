@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "Node.hpp"
+#include "LinkedList.hpp"
 
 int main(int argc, const char * argv[]) {
     
@@ -28,6 +29,46 @@ int main(int argc, const char * argv[]) {
     
     /* Liberar la memoria ocupada por el nodo */
     delete nodeptr;
+    
+    
+    /* Crear una lista */
+    LinkedList<int> * list = new LinkedList<int>();
+    
+    /* Determinar si la lista está vacía */
+    std::cout << (list->empty() ? "La lista está vacía" : "La lista tiene elementos") << std::endl;
+    
+    /* Insertar elementos en la lista */
+    list->insert_front(1);
+    list->insert_front(2);
+    
+    /* Mostrar el contenido de la lista */
+    std::cout << *list << std::endl;
+    
+    /* Obtener tamaño de la lista */
+    std::cout << "Tamaño de la lista: " << list->size() << " elementos" << std::endl;
+    
+    /* Eliminar un elemento */
+    Node<int> * node = list->remove_front();
+    
+    std::cout << "El nodo eliminado es: " << *node << std::endl;
+    
+    /* Liberar la memoria del nodo eliminado */
+    delete node;
+    
+    
+    /* Eliminar un elemento */
+    node = list->remove_front();
+    
+    std::cout << "El nodo eliminado es: " << *node << std::endl;
+    
+    /* Liberar la memoria del nodo eliminado */
+    delete node;
+    
+    /* Determinar si la lista está vacía */
+    std::cout << (list->empty() ? "La lista está vacía" : "La lista tiene elementos") << std::endl;
+    
+    /* Liberar la memoria de la lista */
+    delete list;
     
     
     return 0;
