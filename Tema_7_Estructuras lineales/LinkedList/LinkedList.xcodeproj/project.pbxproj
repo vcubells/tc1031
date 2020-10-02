@@ -10,6 +10,7 @@
 		81774686251E13F400D3D0AA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81774685251E13F400D3D0AA /* main.cpp */; };
 		8177468F251E21D800D3D0AA /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8177468D251E21D800D3D0AA /* Node.cpp */; };
 		81774693251E2B3100D3D0AA /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81774691251E2B3100D3D0AA /* LinkedList.cpp */; };
+		81A3DEAB25277F1500D1342B /* SortedLinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A3DEA925277F1500D1342B /* SortedLinkedList.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		8177468E251E21D800D3D0AA /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
 		81774691251E2B3100D3D0AA /* LinkedList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedList.cpp; sourceTree = "<group>"; };
 		81774692251E2B3100D3D0AA /* LinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LinkedList.hpp; sourceTree = "<group>"; };
+		81A3DEA925277F1500D1342B /* SortedLinkedList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SortedLinkedList.cpp; sourceTree = "<group>"; };
+		81A3DEAA25277F1500D1342B /* SortedLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SortedLinkedList.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				8177468E251E21D800D3D0AA /* Node.hpp */,
 				81774691251E2B3100D3D0AA /* LinkedList.cpp */,
 				81774692251E2B3100D3D0AA /* LinkedList.hpp */,
+				81A3DEA925277F1500D1342B /* SortedLinkedList.cpp */,
+				81A3DEAA25277F1500D1342B /* SortedLinkedList.hpp */,
 			);
 			path = LinkedList;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81774686251E13F400D3D0AA /* main.cpp in Sources */,
+				81A3DEAB25277F1500D1342B /* SortedLinkedList.cpp in Sources */,
 				81774693251E2B3100D3D0AA /* LinkedList.cpp in Sources */,
 				8177468F251E21D800D3D0AA /* Node.cpp in Sources */,
 			);

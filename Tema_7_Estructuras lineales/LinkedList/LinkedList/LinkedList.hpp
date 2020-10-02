@@ -13,7 +13,7 @@
 
 template <class T>
 class LinkedList {
-private:
+protected:
     Node<T> * _first = nullptr;
     int _size = 0;
     
@@ -61,20 +61,27 @@ public:
     Node<T> * remove(Node<T> *);
     
     /* Eliminar todos los elementos de la lista y liberar la memoria ocupada */
-    virtual void clear();
+    void clear();
     
     /* Obtener el nodo que se encuentra en una posición */
     Node<T> * at(int) const;
     
     /* Obtener la posición de un nodo */
-    int index(Node<T> *) const;
+    virtual int index(Node<T> *) const;
     
     /* Obtener la posición de un valor */
-    int index(const T &) const;
+    virtual int index(const T &) const;
 
     /* Mostrar el contenido de la lista */
     template <typename Tn>
     friend std::ostream & operator <<(std::ostream &, const LinkedList<Tn> &);
+    
+    /* Obtener la cantidad de ocurrencias de un elemento */
+    virtual int count(const T &) const;
+    
+    /* Invertir una lista */
+    void reverse();
+    
 };
 
 template <class T>
@@ -83,29 +90,39 @@ LinkedList<T>::~LinkedList()
     this->clear();
 }
 
-
-/* Obtener el tamaño de la lista */
+/* Obtener el tamaño de la lista
+ * Complejidad: O(1)
+ */
 template <class T>
 int LinkedList<T>::size() const
 {
     return this->_size;
 }
 
-/* Obtener el primer elemento */
+/* Obtener el primer elemento
+ * Complejidad: O(1)
+ */
 template <class T>
 Node<T> * LinkedList<T>::first() const
 {
     return this->_first;
 }
 
-/* Determinar si la lista está vacía */
+/* Determinar si la lista está vacía
+ * Complejidad: O(1)
+ */
 template <class T>
 bool LinkedList<T>::empty() const
 {
     return this->_first == nullptr;
 }
 
-/* Insertar un elemento en una posición dada */
+/* Insertar un nodo en una posición dada
+ * Si position < 0 se inserta al inicio
+ * Si position > _size se inserta al final
+ * en cualquier otro caso, se inserta en la posición dada
+ * Complejidad: O(1) si es al inicio, O(n) cualquier otro caso
+ */
 template <class T>
 void LinkedList<T>::insert(const T & value, int position)
 {
@@ -114,11 +131,7 @@ void LinkedList<T>::insert(const T & value, int position)
     
     this->insert(newnode, position);
 }
-/* Insertar un nodo en una posición dada
- * Si position < 0 se inserta al inicio
- * Si position > _size se inserta al final
- * en cualquier otro caso, se inserta en la posición dada
- */
+
 template <class T>
 void LinkedList<T>::insert(Node<T> * node, int position)
 {
@@ -145,7 +158,9 @@ void LinkedList<T>::insert(Node<T> * node, int position)
     ++this->_size;
 }
 
-/* Insertar un elemento al inicio */
+/* Insertar un elemento al inicio
+ * Complejidad: O(1)
+ */
 template <class T>
 void LinkedList<T>::insert_front(const T & value)
 {
@@ -158,7 +173,9 @@ void LinkedList<T>::insert_front(Node<T> * node)
     this->insert(node, 0);
 }
 
-/* Insertar un elemento al final */
+/* Insertar un elemento al final
+ * Complejidad: O(n)
+ */
 template <class T>
 void LinkedList<T>::insert_back(const T & value)
 {
@@ -171,7 +188,16 @@ void LinkedList<T>::insert_back(Node<T> * node)
     this->insert(node, this->_size);
 }
 
-/* Eliminar el elemento en la posición dada */
+/* Eliminar el elemento en la posición dada
+ * Complejidad: O(1) si es al inicio, O(n) cualquier otro caso
+ */
+/* Eliminar un elemento dado */
+template <class T>
+Node<T> * LinkedList<T>::remove(Node<T> * node)
+{
+    return this->remove( this->index(node) );
+}
+
 template <class T>
 Node<T> * LinkedList<T>::remove(int position)
 {
@@ -213,28 +239,27 @@ Node<T> * LinkedList<T>::remove(int position)
     return removenode;
 }
 
-/* Eliminar el primer elemento */
+/* Eliminar el primer elemento
+ * Complejidad: O(1)
+ */
 template <class T>
 Node<T> * LinkedList<T>::remove_front()
 {
     return this->remove(0);
 }
 
-/* Eliminar el último elemento */
+/* Eliminar el último elemento
+ * Complejidad: O(n)
+ */
 template <class T>
 Node<T> * LinkedList<T>::remove_back()
 {
     return this->remove(this->_size - 1);
 }
 
-/* Eliminar un elemento dado */
-template <class T>
-Node<T> * LinkedList<T>::remove(Node<T> * node)
-{
-    return this->remove( this->index(node) );
-}
-
-/* Eliminar todos los elementos de la lista y liberar la memoria ocupada */
+/* Eliminar todos los elementos de la lista y liberar la memoria ocupada
+ * Complejidad: O(n)
+ */
 template <class T>
 void LinkedList<T>::clear()
 {
@@ -263,12 +288,14 @@ void LinkedList<T>::clear()
     this->_first = nullptr;
 }
 
-/* Obtener el nodo que se encuentra en una posición */
+/* Obtener el nodo que se encuentra en una posición
+ * Complejidad: O(n)
+ */
 template  <class T>
-Node<T> *  LinkedList<T>::at(int position) const
+Node<T> * LinkedList<T>::at(int position) const
 {
     /* Cuando la lista está vacía o position es inválida */
-    if (this->empty() || (position < 0 || position >= this->_size )) {
+    if (this->empty() || position < 0 || position >= this->_size) {
         return nullptr;
     }
     
@@ -287,7 +314,9 @@ Node<T> *  LinkedList<T>::at(int position) const
     return tmp;
 }
 
-/* Obtener la posición de un nodo */
+/* Obtener la posición de un nodo
+ * Complejidad: O(n)
+ */
 template  <class T>
 int LinkedList<T>::index(Node<T> * node) const
 {
@@ -300,7 +329,9 @@ int LinkedList<T>::index(Node<T> * node) const
     return this->index( node->getInfo() );
 }
 
-/* Obtener la posición de un valor */
+/* Obtener la posición de un valor
+ * Complejidad: O(n)
+ */
 template  <class T>
 int LinkedList<T>::index(const T & value) const
 {
@@ -328,7 +359,67 @@ int LinkedList<T>::index(const T & value) const
     return pos;
 }
 
-/* Mostrar el contenido de la lista */
+/* Obtener la cantidad de ocurrencias de un elemento
+ * Complejidad: O(n)
+ */
+template  <class T>
+int LinkedList<T>::count(const T & value) const
+{
+    /* Obtener una referencia al primer elemento */
+    Node<T> * tmp = this->_first;
+    
+    /* Contador de ocurrencias */
+    int ocurr = 0;
+    
+    /* Recorrer la lista */
+    while (tmp != nullptr) {
+        
+        /* Comparar con el valor buscado */
+        if (tmp->getInfo() == value) {
+            ++ocurr;
+        }
+        
+        /* Desplazarse al siguiente elemento */
+        tmp = tmp->getNext();
+    }
+    
+    return ocurr;
+}
+
+/* Invertir una lista
+ * Complejidad: O(n)
+ */
+template  <class T>
+void LinkedList<T>::reverse()
+{
+    /* Obtener una referencia al segundo elemento */
+    Node<T> * next = this->_first->getNext();
+    
+    Node<T> * previous = nullptr;
+    
+    /* Recorrer la lista */
+    while (next != nullptr) {
+        
+        /* Invertir el apuntador next del nodo _first para que apunte al nodo anterior */
+        this->_first->setNext(previous);
+        
+        /* Mover previous a la posición de _first */
+        previous = this->_first;
+        
+        /* Mover _first al siguiente nodo */
+        this->_first = next;
+        
+        /* Mover next al nodo despúes de él */
+        next = next->getNext();
+    }
+    
+    /* Invertir el apuntador next del último nodo para que apunte al nodo anterior */
+    this->_first->setNext(previous);
+}
+
+/* Mostrar el contenido de la lista
+ * Complejidad: O(n)
+ */
 template <class T>
 std::ostream & operator <<(std::ostream & os, const LinkedList<T> & list)
 {
@@ -345,6 +436,5 @@ std::ostream & operator <<(std::ostream & os, const LinkedList<T> & list)
     
     return os;
 }
-
 
 #endif /* LinkedList_hpp */
