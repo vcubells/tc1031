@@ -17,6 +17,20 @@ protected:
     Node<T> * _first = nullptr;
     int _size = 0;
     
+    /* Clase Iterator */
+    class Iterator {
+        const LinkedList<T> * _data;
+        int _position;
+        
+    public:
+        Iterator( const LinkedList<T> * _adata, int _aposition)
+        : _data(_adata), _position(_aposition) {}
+        
+        Node<T> operator *() const { return *(_data->at(_position)); }
+        const  Iterator & operator ++() { ++_position; return *this; }
+        bool operator != (const Iterator & it) const { return _position != it._position; }
+    };
+    
 public:
     /* Constructor */
     LinkedList() { };
@@ -61,7 +75,7 @@ public:
     Node<T> * remove(Node<T> *);
     
     /* Eliminar todos los elementos de la lista y liberar la memoria ocupada */
-    void clear();
+    virtual void clear();
     
     /* Obtener el nodo que se encuentra en una posición */
     Node<T> * at(int) const;
@@ -81,6 +95,13 @@ public:
     
     /* Invertir una lista */
     void reverse();
+    
+    /* Funciones que utiliza el foreach */
+    Iterator begin() const { return { this, 0}; }
+    Iterator end() const { return {this, _size }; }
+    
+    /* Sobrecarga del operador índice */
+    Node<T> * operator [](const int);
     
 };
 
@@ -417,21 +438,24 @@ void LinkedList<T>::reverse()
     this->_first->setNext(previous);
 }
 
+/* Obtener el elemento de una posición
+ * Complejidad: O(n)
+ */
+template  <class T>
+Node<T> * LinkedList<T>::operator [](const int position)
+{
+    return this->at(position);
+}
+
 /* Mostrar el contenido de la lista
  * Complejidad: O(n)
  */
 template <class T>
 std::ostream & operator <<(std::ostream & os, const LinkedList<T> & list)
 {
-    /* Obtener el primer elemento de la lista */
-    Node<T> * tmp = list._first;
-    
-    /* Desplazarse mientras tmp != nullptr */
-    while (tmp != nullptr) {
-        os << *tmp << std::endl;
-        
-        /* Desplazar el apuntador al siguiente elemento */
-        tmp = tmp->getNext();
+    /* Recorrer los elementos con un iterador */
+    for (const Node<T> & node : list) {
+        os << node << " ";
     }
     
     return os;
