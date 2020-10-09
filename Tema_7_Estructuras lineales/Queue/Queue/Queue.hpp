@@ -33,6 +33,9 @@ public:
     void enqueue(const T &);
     void enqueue(Node<T> *);
     
+    /* Invertir una lista */
+    void reverse() override;
+    
     /* Mostrar el contenido de la cola */
     template <typename Tn>
     friend std::ostream & operator <<(std::ostream &, const Queue<Tn> &);
@@ -41,7 +44,7 @@ public:
     using LinkedList<T>::first;
     using LinkedList<T>::empty;
     using LinkedList<T>::size;
-    using LinkedList<T>::clear;
+
 };
 
 
@@ -106,6 +109,22 @@ void Queue<T>::enqueue(Node<T> * node)
     }
     
     ++this->_size;
+}
+
+/* Invertir los elementos de la cola
+ * Complejidad: O(n)
+ */
+template <class T>
+void Queue<T>::reverse()
+{
+    /* Guardar el primer elemento */
+    Node<T> * aux = this->_first;
+    
+    /* Invertir la cola */
+    LinkedList<T>::reverse();
+    
+    /* Establecer last en aux */
+    this->_last = aux;
 }
 
 /* Mostrar el contenido de la pila

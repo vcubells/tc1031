@@ -54,7 +54,7 @@ int main(int argc, const char * argv[]) {
     /* Determinar si la cola está vacía */
     std::cout << (queue->empty() ? "(E) La cola está vacía" : "(E) La cola tiene elementos") << std::endl;
     
-    /* Liberando la memoria de la cola */
+    /* Liberar la memoria de la cola */
     delete queue;
     std::cout << "(D) Se liberó la memoria de la cola" << std::endl;
     

@@ -94,7 +94,7 @@ public:
     virtual int count(const T &) const;
     
     /* Invertir una lista */
-    void reverse();
+    virtual void reverse();
     
     /* Funciones que utiliza el foreach */
     Iterator begin() const { return { this, 0}; }
