@@ -2,6 +2,13 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Tema_8_Estructuras_no_lineales"
+      name = "Tema_8_Estructuras_no_lineales">
+      <FileRef
+         location = "group:BinaryTree/BinaryTree.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Tema_6_Apuntadores"
       name = "Tema_6_Apuntadores">
       <FileRef

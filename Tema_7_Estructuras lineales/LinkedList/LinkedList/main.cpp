@@ -78,6 +78,13 @@ int main(int argc, const char * argv[]) {
         std::cout << "(P) El nodo que se encuentra en la posición 2 es el: " << *at << std::endl;
     }
     
+    /* Obtener el nodo que está en una posición [] */
+    at = list->operator[](3);
+        
+    if (at != nullptr) {
+        std::cout << "(P) El nodo que se encuentra en la posición 3 es el: " << *at << std::endl;
+    }
+    
     /* Obtener el nodo que está en una posición  */
     std::cout << "(P) El 8 se encuentra en la posición: " << list->index(8) << std::endl;
     
