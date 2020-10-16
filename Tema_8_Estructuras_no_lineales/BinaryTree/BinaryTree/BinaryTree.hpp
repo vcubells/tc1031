@@ -15,34 +15,35 @@ template <class T>
 class BinaryTree {
     TreeNode<T> * root = nullptr;
     
+    void clear(TreeNode<T> * );
+    
 public:
     BinaryTree() {}
     virtual ~BinaryTree();
     
     /* Insertar un nodo en el árbol */
-    void insert(T &);
-    void insert(TreeNode<T> *, TreeNode<T> *);
+    bool insert(T &, TreeNode<T> *);
+    bool insert(TreeNode<T> *, TreeNode<T> *);
+    
+    bool empty() const;
     
     /* Eliminar un nodo del árbol */
     TreeNode<T> * remove(T &);
     
     /* Eliminar todos los nodos del árbol */
     void clear();
-    void clear(TreeNode<T> * );
+    
     
     /* Recorridos de un árbol */
     void preOrden() const;
     void preOrden(TreeNode<T> *) const;
-    
+
     void inOrden() const;
     void inOrden(TreeNode<T> *) const;
     
     void postOrden() const;
     void postOrden(TreeNode<T> *) const;
     
-    /* Mostrar el contenido del árbol */
-    template <typename Tn>
-    friend std::ostream & operator <<(std::ostream &, const BinaryTree<Tn> &);
 };
 
 template <class T>
@@ -51,33 +52,54 @@ BinaryTree<T>::~BinaryTree()
     this->clear();
 }
 
+template <class T>
+bool BinaryTree<T>::empty() const
+{
+    return this->root == nullptr;
+}
+
 /* Insertar un nodo en el árbol */
 template <class T>
-void BinaryTree<T>::insert(T & value)
+bool BinaryTree<T>::insert(T & value, TreeNode<T> * parent)
 {
-    this->insert( new TreeNode<T>(value), this->root );
+    return this->insert( new TreeNode<T>(value), parent );
 }
 
 template <class T>
-void BinaryTree<T>::insert(TreeNode<T> * node, TreeNode<T> * current)
+bool BinaryTree<T>::insert(TreeNode<T> * node, TreeNode<T> * parent)
 {
+    /* Declarar variable para saber si se insertó el nodo */
+    bool inserted = false;
+    
     /* Verificar si el árbol está vacío */
     if (this->root == nullptr) {
         /* Establecer el nodo como raíz */
         this->root = node;
     }
+    else if (parent == nullptr)
+    {
+        /* Insertar un nuevo nodo raiz */
+        node->setLeft(root);
+        root = node;
+    }
     else {
-        if (current->getLeft() == nullptr) {
-            current->setLeft(node);
+        if (parent->getLeft() == nullptr) {
+            parent->setLeft(node);
+            inserted = true;
         }
-        else if (current->getRight() == nullptr) {
-                current->setRight(node);
+        else if (parent->getRight() == nullptr) {
+            parent->setRight(node);
+            inserted = true;
             }
         else {
-            insert(node, current->getLeft() );
-            insert(node, current->getRight() );
+            inserted = insert(node, parent->getLeft() );
+            if (!inserted) {
+                insert(node, parent->getRight() );
+            }
         }
     }
+    
+    return inserted;
 }
 
 /* Eliminar un nodo del árbol */
@@ -92,6 +114,7 @@ template <class T>
 void BinaryTree<T>::clear()
 {
     this->clear(this->root);
+    this->root = nullptr;
 }
 
 template <class T>
@@ -168,11 +191,5 @@ void BinaryTree<T>::postOrden(TreeNode<T> * node) const
     }
 }
 
-/* Mostrar el contenido del árbol */
-template <class T>
-std::ostream & operator <<(std::ostream &, const BinaryTree<T> &)
-{
-    
-}
 
 #endif /* BinaryTree_hpp */

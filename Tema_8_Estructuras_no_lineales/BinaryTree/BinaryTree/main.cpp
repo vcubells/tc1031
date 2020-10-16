@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "TreeNode.hpp"
+#include "BinaryTree.hpp"
 
 int main(int argc, const char * argv[]) {
     
@@ -33,6 +34,62 @@ int main(int argc, const char * argv[]) {
     /* Liberar la memoria ocupada por el nodo */
     std::cout << "<- Nodo eliminado con delete: " << *nodeptr << std::endl;
     delete nodeptr;
+    
+    
+    /* Creación de un BinaryTree vacío */
+    std::cout << std::endl;
+    std::cout << "--- Demostración del uso de un Binary Tree ---" << std::endl;
+    std::cout << std::endl;
+    
+    /* Crear un árbol */
+    std::cout << "(C) Se crea un árbol vacío" << std::endl;
+    BinaryTree<int> * tree = new BinaryTree<int>();
+    
+    /* Insertar nodos en el árbol */
+    
+    std::cout << "(I) Se insertó la raiz" << std::endl;
+    TreeNode<int> * root = new TreeNode<int>(1);
+    
+    tree->insert(root, nullptr);
+    
+    std::cout << "(I) Se insertaron algunos nodos" << std::endl;
+    
+    TreeNode<int> * a = new TreeNode<int>(2);
+    TreeNode<int> * b = new TreeNode<int>(3);
+    TreeNode<int> * c = new TreeNode<int>(4);
+    TreeNode<int> * d = new TreeNode<int>(5);
+    TreeNode<int> * e = new TreeNode<int>(6);
+    TreeNode<int> * f = new TreeNode<int>(7);
+    
+    tree->insert(a, root);
+    tree->insert(b, root);
+    tree->insert(c, root);
+    tree->insert(d, root);
+    
+    tree->insert(e, b);
+    tree->insert(f, b);
+    
+    std::cout << "(V) Se imprime el árbol en PreOrden" << std::endl;
+    tree->preOrden();
+    std::cout << std::endl;
+    
+    std::cout << "(V) Se imprime el árbol en InOrden" << std::endl;
+    tree->inOrden();
+    std::cout << std::endl;
+    
+    std::cout << "(V) Se imprime el árbol en PostOrden" << std::endl;
+    tree->postOrden();
+    std::cout << std::endl;
+    
+    std::cout << "(C) Se eliminan todos los nodos del árbol" << std::endl;
+    tree->clear();
+    
+    /* Determinar si el árbol está vacío */
+    std::cout << (tree->empty() ? "(E) El árbol está vacío" : "(E) El árbol tiene elementos") << std::endl;
+    
+    /* Eliminar la memoria ocupada por el árbol */
+    delete tree;
+    std::cout << "(D) Se liberó la memoria del árbol" << std::endl;
     
     
     return 0;
