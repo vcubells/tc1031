@@ -10,6 +10,7 @@
 		810A9E8A2535DF1500929185 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 810A9E892535DF1500929185 /* main.cpp */; };
 		810A9E932535DF5600929185 /* TreeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 810A9E912535DF5600929185 /* TreeNode.cpp */; };
 		810A9E972535E19200929185 /* BinaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 810A9E952535E19200929185 /* BinaryTree.cpp */; };
+		81A5B8C5253F0AA300E39624 /* BST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5B8C3253F0AA300E39624 /* BST.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		810A9E922535DF5600929185 /* TreeNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TreeNode.hpp; sourceTree = "<group>"; };
 		810A9E952535E19200929185 /* BinaryTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryTree.cpp; sourceTree = "<group>"; };
 		810A9E962535E19200929185 /* BinaryTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinaryTree.hpp; sourceTree = "<group>"; };
+		81A5B8C3253F0AA300E39624 /* BST.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BST.cpp; sourceTree = "<group>"; };
+		81A5B8C4253F0AA300E39624 /* BST.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BST.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				810A9E922535DF5600929185 /* TreeNode.hpp */,
 				810A9E952535E19200929185 /* BinaryTree.cpp */,
 				810A9E962535E19200929185 /* BinaryTree.hpp */,
+				81A5B8C3253F0AA300E39624 /* BST.cpp */,
+				81A5B8C4253F0AA300E39624 /* BST.hpp */,
 			);
 			path = BinaryTree;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				810A9E8A2535DF1500929185 /* main.cpp in Sources */,
+				81A5B8C5253F0AA300E39624 /* BST.cpp in Sources */,
 				810A9E932535DF5600929185 /* TreeNode.cpp in Sources */,
 				810A9E972535E19200929185 /* BinaryTree.cpp in Sources */,
 			);

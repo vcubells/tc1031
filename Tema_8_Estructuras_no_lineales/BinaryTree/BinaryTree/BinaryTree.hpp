@@ -13,6 +13,7 @@
 
 template <class T>
 class BinaryTree {
+protected:
     TreeNode<T> * root = nullptr;
     
     void clear(TreeNode<T> * );
@@ -28,7 +29,7 @@ public:
     bool empty() const;
     
     /* Eliminar un nodo del árbol */
-    TreeNode<T> * remove(T &);
+    virtual TreeNode<T> * remove(T &);
     
     /* Eliminar todos los nodos del árbol */
     void clear();
@@ -106,7 +107,7 @@ bool BinaryTree<T>::insert(TreeNode<T> * node, TreeNode<T> * parent)
 template <class T>
 TreeNode<T> * BinaryTree<T>::remove(T &)
 {
-    
+    return nullptr;
 }
 
 /* Eliminar todos los nodos del árbol */

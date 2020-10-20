@@ -17,6 +17,8 @@ private:
     TreeNode<T> * left = nullptr;
     TreeNode<T> * right = nullptr;
     
+    TreeNode<T> * parent = nullptr;
+    
 public:
     /* Constructores */
     TreeNode() { };
@@ -35,6 +37,9 @@ public:
     
     TreeNode<T> * getRight() const { return right; }
     void setRight(TreeNode<T> * value) { right = value; }
+    
+    TreeNode<T> * getParent() const { return parent; }
+    void setParent(TreeNode<T> * value) { parent = value; }
     
     /* Sobrecarga operador == */
     bool operator ==(TreeNode<T> &);

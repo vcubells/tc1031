@@ -8,6 +8,7 @@
 #include <iostream>
 #include "TreeNode.hpp"
 #include "BinaryTree.hpp"
+#include "BST.hpp"
 
 int main(int argc, const char * argv[]) {
     
@@ -90,6 +91,76 @@ int main(int argc, const char * argv[]) {
     /* Eliminar la memoria ocupada por el árbol */
     delete tree;
     std::cout << "(D) Se liberó la memoria del árbol" << std::endl;
+    
+    
+    /* Creación de un BST vacío */
+    std::cout << std::endl;
+    std::cout << "--- Demostración del uso de un Binary Search Tree ---" << std::endl;
+    std::cout << std::endl;
+    
+    /* Crear un árbol */
+    std::cout << "(C) Se crea un BST vacío" << std::endl;
+    BST<int> * bst = new BST<int>();
+    
+    /* Insertar nodos en el árbol */
+    
+    std::cout << "(I) Se insertaron algunos nodos" << std::endl;
+    
+    TreeNode<int> * na = new TreeNode<int>(10);
+    TreeNode<int> * nb = new TreeNode<int>(8);
+    TreeNode<int> * nc = new TreeNode<int>(4);
+    TreeNode<int> * nd = new TreeNode<int>(12);
+    TreeNode<int> * ne = new TreeNode<int>(6);
+    TreeNode<int> * nf = new TreeNode<int>(9);
+    
+    bst->insert(na);
+    bst->insert(nb);
+    bst->insert(nc);
+    bst->insert(nd);
+    bst->insert(ne);
+    bst->insert(nf);
+    
+    /* Insertar un nodo repetido */
+    TreeNode<int> * repetido = new TreeNode<int>(9);
+    bool inserted = bst->insert(repetido);
+    
+    std::cout << (inserted ? "(I) El valor 9 se insertó" : "(I) El valor 9 ya existe existe") << std::endl;
+    
+    std::cout << "(V) Se imprime el BST en PreOrden" << std::endl;
+    bst->preOrden();
+    std::cout << std::endl;
+    
+    std::cout << "(V) Se imprime el BST en InOrden" << std::endl;
+    bst->inOrden();
+    std::cout << std::endl;
+    
+    std::cout << "(V) Se imprime el BST en PostOrden" << std::endl;
+    bst->postOrden();
+    std::cout << std::endl;
+    
+    TreeNode<int> * exist = bst->search(6);
+    /* Buscar si el nodo existe */
+    if (exist != nullptr) {
+        std::cout << "(S) El valor 6 se encontró y su padre es ";
+        std::cout << exist->getParent()->getInfo() << std::endl;
+    }
+    else {
+        std::cout << "(S) El valor 6 no existe" << std::endl;
+    }
+    
+    exist = bst->search(20);
+    /* Buscar si el nodo existe */
+    std::cout << (exist ? "(S) El valor 20 se encontró" : "(S) El valor 20 no existe") << std::endl;
+    
+    std::cout << "(C) Se eliminan todos los nodos del árbol" << std::endl;
+    bst->clear();
+    
+    /* Determinar si el BST está vacío */
+    std::cout << (bst->empty() ? "(E) El BST está vacío" : "(E) El BST tiene elementos") << std::endl;
+    
+    /* Eliminar la memoria ocupada por el BST */
+    delete bst;
+    std::cout << "(D) Se liberó la memoria del BST" << std::endl;
     
     
     return 0;
