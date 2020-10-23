@@ -5,6 +5,9 @@
       location = "group:Tema_8_Estructuras_no_lineales"
       name = "Tema_8_Estructuras_no_lineales">
       <FileRef
+         location = "group:ejemplo_stl_map/ejemplo_stl_map.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:BinaryTree/BinaryTree.xcodeproj">
       </FileRef>
    </Group>
