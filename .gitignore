@@ -32,3 +32,8 @@
 *.app
 
 .DS_Store
+
+*.out
+*.plist
+*.pbxproj
+
