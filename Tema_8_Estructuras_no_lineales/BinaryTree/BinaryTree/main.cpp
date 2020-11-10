@@ -138,6 +138,12 @@ int main(int argc, const char * argv[]) {
     bst->postOrden();
     std::cout << std::endl;
     
+    std::cout << "(V) Se imprimen los primeros n elementos en InOrden" << std::endl;
+    int nodos = bst->topN();
+    std::cout << std::endl;
+    std::cout << "El BTS tiene " << nodos <<" nodos" << std::endl;
+    std::cout << std::endl;
+    
     TreeNode<int> * exist = bst->search(6);
     /* Buscar si el nodo existe */
     if (exist != nullptr) {

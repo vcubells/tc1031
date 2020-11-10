@@ -45,6 +45,9 @@ public:
     void postOrden() const;
     void postOrden(TreeNode<T> *) const;
     
+    int topN() const;
+    int topN(TreeNode<T> *, int, int) const;
+    
 };
 
 template <class T>
@@ -190,6 +193,33 @@ void BinaryTree<T>::postOrden(TreeNode<T> * node) const
         /* Procesar el nodo */
         std::cout << *node << " ";
     }
+}
+
+
+template <class T>
+int BinaryTree<T>::topN() const
+{
+    return this->topN( this->root, 4, 0 );
+}
+
+template <class T>
+int BinaryTree<T>::topN(TreeNode<T> * node, int n, int cont) const
+{
+    if (node != nullptr && cont < n) {
+        
+        /* Desplazarse a la izquierda */
+        cont = topN( node->getLeft(), n, cont );
+         
+        if (cont < n ) {
+            std::cout << *node << " (" << ++cont << ") ";
+        }
+        else return cont;
+        
+        /* Desplazarse a la derecha */
+        cont = topN( node->getRight(), n, cont );
+    }
+    
+    return cont;
 }
 
 

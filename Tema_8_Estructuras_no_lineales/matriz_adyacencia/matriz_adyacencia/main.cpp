@@ -24,17 +24,17 @@ std::vector < std::vector<int> > genera_grafo_no_dirigido(int n)
     }
     
     /* Adicionar aristas al grafo */
-    grafo[1][0] = 1;  // B -> A
+    grafo[1][0] = 1;  // B <-> A
     
-    grafo[2][0] = 1;  // C -> A
+    grafo[2][0] = 1;  // C <-> A
 
-    grafo[2][1] = 1;  // C -> B
+    grafo[2][1] = 1;  // C <-> B
     
-    grafo[3][0] = 1;  // D -> A
+    grafo[3][0] = 1;  // D <-> A
     
-    grafo[4][2] = 1;  // D -> C
+    grafo[4][2] = 1;  // D <-> C
     
-    grafo[5][2] = 1;  // F -> C
+    grafo[5][2] = 1;  // F <-> C
     
     return grafo;
 
