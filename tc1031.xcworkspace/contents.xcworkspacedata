@@ -5,6 +5,9 @@
       location = "group:Tema_8_Estructuras_no_lineales"
       name = "Tema_8_Estructuras_no_lineales">
       <FileRef
+         location = "group:actividad_4-1/actividad_4-1.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:Graph/Graph.xcodeproj">
       </FileRef>
       <FileRef
