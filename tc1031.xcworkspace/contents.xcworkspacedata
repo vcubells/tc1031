@@ -5,6 +5,9 @@
       location = "group:Tema_8_Estructuras_no_lineales"
       name = "Tema_8_Estructuras_no_lineales">
       <FileRef
+         location = "group:HashMap/HashMap.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:stl/stl.xcodeproj">
       </FileRef>
       <FileRef
