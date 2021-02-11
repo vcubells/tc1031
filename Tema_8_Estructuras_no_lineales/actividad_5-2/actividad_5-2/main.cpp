@@ -13,6 +13,7 @@
 #include <set>
 #include <map>
 #include "Registro.hpp"
+#include "ConexionesComputadoras.hpp"
 
 auto read_csv(std::string filename)
 {
@@ -95,9 +96,11 @@ int main(int argc, const char * argv[]) {
     
     /* Crear el conjunto y el diccionario */
     
-    std::cout << "--- Set de dominios ----" << std::endl;
+    std::cout << "--- 1. Set de dominios ----" << std::endl;
     
     std::set<std::string> dominios;
+    
+    std::map<std::string, std::string> mapa;
     
     for (auto r : registros) {
         std::string origen = r.getOrigen();
@@ -106,6 +109,10 @@ int main(int argc, const char * argv[]) {
         
         if (found == std::string::npos) {
             dominios.insert(origen);
+            
+            /* Insertar en el Hash */
+            //ConexionesComputadoras conexiones(r.getIPOrigen(), origen);
+            mapa.insert(std::make_pair(origen, r.getIPOrigen()));
         }
         
         std::string destino = r.getDestino();
@@ -114,6 +121,10 @@ int main(int argc, const char * argv[]) {
         
         if (found == std::string::npos) {
             dominios.insert(destino);
+            
+            /* Insertar en el Hash */
+            //ConexionesComputadoras conexiones(r.getIPDestino(), destino);
+            mapa.insert(std::make_pair(destino, r.getIPDestino() ));
         }
     }
     
@@ -122,6 +133,12 @@ int main(int argc, const char * argv[]) {
     }
         
     std::cout << std::endl;
+    
+    std::cout << "--- 2. IPs de dominios raros ----" << std::endl;
+    
+    std::cout << mapa["1cvh4vcwcer9x7me4lr1.net"] << std::endl;
+    std::cout << mapa["gzk5twsf423mak2wmldj.ru"] << std::endl;
+    
     
     /* Eliminar todos los registros */
     registros.clear();

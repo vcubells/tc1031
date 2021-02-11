@@ -26,6 +26,7 @@ public:
     
     bool empty() const;
     int size() const;
+    int capacity() const;
     
     bool put(K,V);
     int rehash(int, int);
@@ -66,6 +67,12 @@ int HashMap<K,V>::size() const
 }
 
 template <class K, class V>
+int HashMap<K,V>::capacity() const
+{
+    return this->_capacity;
+}
+
+template <class K, class V>
 int HashMap<K,V>::hash_function(K key) const
 {
     return key % this->_capacity;
@@ -74,6 +81,10 @@ int HashMap<K,V>::hash_function(K key) const
 template <class K, class V>
 bool HashMap<K,V>::put(K key,V value)
 {
+    if (this->_size == this->_capacity) {
+        return false;
+    }
+    
     int indice = hash_function(key);
 
     if (this->_status[indice] == "ocupado") {
@@ -84,6 +95,7 @@ bool HashMap<K,V>::put(K key,V value)
         this->_keys[indice] = key;
         this->_values[indice] = value;
         this->_status[indice] = "ocupado";
+        this->_size++;
         
         return true;
     }
