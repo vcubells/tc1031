@@ -22,6 +22,8 @@ int Libro::getId()
 bool Libro::operator <(Libro & libro)
 {
     return id < libro.id;
+    // return autor < libro.autor
+    // return titulo < libro.titulo
 }
 
 std::ostream & operator << (std::ostream & os, const Libro & libro)
@@ -30,3 +32,24 @@ std::ostream & operator << (std::ostream & os, const Libro & libro)
     
     return os;
 }
+
+
+/*
+ Sobrecarga
+ 
+ 1- Sobrecarga de métodos
+    
+    bool Insert(int item);              // Método 1
+    bool Insert(int item, int index);   // Método 2
+ 
+    objeto.Insert(5);   // Llama al método 1
+    objeto.Insert(3,1); // Llama al método 2
+ 
+ 2- Sobrecarga de operadores
+ 
+    bool Clase::operator <(Clase & otra)
+    bool Clase::operator >(Clase & otra)
+ 
+    objeto.operator <(otra)
+    
+ */

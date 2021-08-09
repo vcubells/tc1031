@@ -11,7 +11,7 @@
 /*
  
  Temporal O(n)
- Espacial O(n)
+ Espacial O(1)
 
 */
 

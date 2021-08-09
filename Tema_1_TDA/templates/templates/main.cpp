@@ -13,12 +13,19 @@
 template <class T>
 T menor(T a, T b)
 {
-    //return (a < b ? a : b);
+    return (a < b ? a : b);
 
-     if (a < b)
-        return a;
-     else
-        return b;
+//     if (a < b)
+//        return a;
+//     else
+//        return b;
+}
+
+
+template <class T, class E>
+T menor(T a, E b)
+{
+    return (a < b ? a : b);
 }
 
 int main(int argc, const char * argv[]) {
@@ -27,7 +34,7 @@ int main(int argc, const char * argv[]) {
     int int1 = 5;
     int int2 = 10;
     
-    /* COmparra dos nñumeros enteros */
+    /* Comparar dos números enteros */
     std::cout << "El entero menor es: " << menor(int1, int2) << std::endl;
     
     /* Definir dos números flotantes */
@@ -43,6 +50,6 @@ int main(int argc, const char * argv[]) {
     
     /* Comparar dos libros */
     std::cout << "El Libro menor es: " << menor(l1, l2) << std::endl;
-    
+        
     return 0;
 }

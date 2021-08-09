@@ -57,7 +57,7 @@ int main(int argc, const char * argv[]) {
     int n = -1;
     int x = -1;
     
-    /* Entrar el número x a evelar a la potencia n */
+    /* Entrar el número x a elevar a la potencia n */
     do {
         std::cout << "Entre el número: ";
         std::cin >> x;
