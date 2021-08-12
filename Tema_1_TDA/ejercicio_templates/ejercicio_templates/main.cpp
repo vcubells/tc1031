@@ -41,6 +41,11 @@ int main(int argc, const char * argv[]) {
     Array<Libro> libros;
     comun<Libro>(libros);
     
+    /* Posible opción  el uso del opoerador typeof */
+//    auto var = 1.f;
+//    Array<typeof(var)> ints;
+//    comun<typeof(var)>(ints);
+    
     
     return 0;
 }
@@ -53,11 +58,12 @@ Array<Libro> insertar(Array<Libro> arreglo)
     arreglo.insertar(Libro("Libro 3"));
     arreglo.insertar(Libro("Libro 4"));
     arreglo.insertar(Libro("Libro 5"));
-    
+
     /* Insertar un elemento cuando el arreglo está lleno */
     arreglo.insertar(Libro("Libro 6"));
+
+   return arreglo;
     
-    return arreglo;
 }
 
 Array<float> insertar(Array<float> arreglo)

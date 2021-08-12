@@ -14,7 +14,7 @@ class Libro
 {
     std::string titulo;
 public:
-    Libro();
+    Libro() : Libro("Sin definir") {}
     Libro(std::string t) : titulo(t) {}
     
     friend std::ostream & operator<<(std::ostream & os, const Libro & libro);
