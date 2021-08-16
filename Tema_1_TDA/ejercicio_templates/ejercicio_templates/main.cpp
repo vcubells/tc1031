@@ -17,6 +17,9 @@ Array<char> insertar(Array<char>);
 Array<float> insertar(Array<float>);
 Array<Libro> insertar(Array<Libro>);
 
+void sin_parametros();
+void con_parametros(int, const char * []);
+
 int main(int argc, const char * argv[]) {
     
     /* TODO #1. Crear un TDA Array que sea un template */
@@ -25,6 +28,17 @@ int main(int argc, const char * argv[]) {
     
     /* TODO #2. Ejemplificar el uso del TDA Array con diferentes tipos como int y float */
     
+    sin_parametros();
+    
+    /* Posible opción  parametrizada con el uso del operador typeof */
+
+    con_parametros(argc, argv);
+    
+    return 0;
+}
+
+void sin_parametros()
+{
     std::cout << "--- Trabajando con enteros ---" << std::endl;
     Array<int> enteros;
     comun<int>(enteros);
@@ -40,14 +54,29 @@ int main(int argc, const char * argv[]) {
     std::cout << "--- Trabajando con objetos de tipo Libros ---" << std::endl;
     Array<Libro> libros;
     comun<Libro>(libros);
-    
-    /* Posible opción  el uso del opoerador typeof */
-//    auto var = 1.f;
-//    Array<typeof(var)> ints;
-//    comun<typeof(var)>(ints);
-    
-    
-    return 0;
+}
+
+void con_parametros(int argc, const char * argv[])
+{
+    if (argc != 3) {
+        std::cout << "Use: <program_name> <type> <list>"  << std::endl;
+        std::cout << "<type> : i | f | c | l"  << std::endl;
+        std::cout << "<list> : \"1,2,3,4,5,6\""  << std::endl;
+    }
+    else {
+//        switch (argv[1]) {
+//            case 'I':
+//                <#statements#>
+//                break;
+//
+//            default:
+//                break;
+//        }
+        
+    }
+    //    auto var = 1.f;
+    //    Array<typeof(var)> ints;
+    //    comun<typeof(var)>(ints);
 }
 
 Array<Libro> insertar(Array<Libro> arreglo)

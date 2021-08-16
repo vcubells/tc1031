@@ -45,7 +45,7 @@ long int potencia(int x, int n)
     }
     /* Paso recursivo */
     else {
-        std::cout << "Calculando " << x <<"^" << n << std::endl;
+        //std::cout << "Calculando " << x <<"^" << n << std::endl;
         long int pot = potencia(x, n-1);
         long int res = x * pot;
         std::cout << "Resultado " << x <<"^" << n << " = " << res << std::endl;
@@ -72,7 +72,9 @@ int main(int argc, const char * argv[]) {
     while (n < 0);
     
     /* Calcular la potencia de x a la n */
-    long int resultado = potencia(x, n);
+    long int resultado = potencia(x, n);   //x^n x**n
+    
+    
     
     /* Mostrar el resultado */
     std::cout << x << "^" << n << " = " << resultado << std::endl;

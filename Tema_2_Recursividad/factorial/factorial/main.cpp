@@ -10,7 +10,7 @@
 
 /*
  
- Ejemplo paso a paso de como se resuleve el factorial de 5
+ Ejemplo paso a paso de como se resuelve el factorial de 5
  
 n = 5   factorial(5)   5 * factorial(5-1) =     // Paso recursivo
 n = 4   factorial(4)   4 * factorial(4-1) =     // Paso recursivo
@@ -69,7 +69,13 @@ n = 5   factorial(5)   5 * 24 = 120
  
 */
 
-long int factorial(int n)
+/*
+ int -> -2^32-1 .. 2^32-1
+ long int -> -2^64-1 .. 2^64-1
+ unsigned long int -> 0 .. 2*(2^64-1)
+ */
+
+unsigned long int factorial(int n)
 {
     /* Condición de parada */
     if (n <= 1) {
@@ -93,7 +99,7 @@ int main(int argc, const char * argv[]) {
     while (n < 0);
     
     /* Calcular el factorial de n */
-    long int resultado = factorial(n);
+    unsigned long int resultado = factorial(n);
     
     /* Mostrar el resultado */
     std::cout << "El factorial de " << n << " = " << resultado << std::endl;
