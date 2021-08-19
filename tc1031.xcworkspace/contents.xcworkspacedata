@@ -89,6 +89,12 @@
       location = "group:Tema_2_Recursividad"
       name = "Tema_2_Recursividad">
       <FileRef
+         location = "group:../palindromo/palindromo.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../suma_digitos/suma_digitos.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:../suma_vector/suma_vector.xcodeproj">
       </FileRef>
       <FileRef
