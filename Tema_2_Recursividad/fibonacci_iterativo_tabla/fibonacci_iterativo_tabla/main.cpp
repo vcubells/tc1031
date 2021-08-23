@@ -20,7 +20,7 @@
 int fibonacci(int n)
 {
     /* Definir una tabla temporal */
-    std::vector<int> tabla(10);
+    std::vector<int> tabla(n);
     
     tabla[0] = 0;
     tabla[1] = 1;
