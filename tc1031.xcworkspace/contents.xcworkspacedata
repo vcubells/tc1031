@@ -89,20 +89,81 @@
       location = "group:Tema_2_Recursividad"
       name = "Tema_2_Recursividad">
       <FileRef
-         location = "group:../compara_fibonacci/compara_fibonacci.xcodeproj">
+         location = "group:invierte_cadena/invierte_cadena.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:../palindromo/palindromo.xcodeproj">
+         location = "group:invierte_digitos/invierte_digitos.xcodeproj">
       </FileRef>
-      <FileRef
-         location = "group:../suma_digitos/suma_digitos.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:../suma_vector/suma_vector.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:../mcd/mcd.xcodeproj">
-      </FileRef>
+      <Group
+         location = "group:suma_digitos"
+         name = "suma_digitos">
+         <FileRef
+            location = "group:suma_digitos.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:suma_digitos"
+            name = "suma_digitos">
+            <FileRef
+               location = "group:main.cpp">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:suma_vector"
+         name = "suma_vector">
+         <FileRef
+            location = "group:suma_vector.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:suma_vector"
+            name = "suma_vector">
+            <FileRef
+               location = "group:main.cpp">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:mcd"
+         name = "mcd">
+         <Group
+            location = "group:mcd"
+            name = "mcd">
+            <FileRef
+               location = "group:main.cpp">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:mcd.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:palindromo"
+         name = "palindromo">
+         <Group
+            location = "group:palindromo"
+            name = "palindromo">
+            <FileRef
+               location = "group:main.cpp">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:palindromo.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:compara_fibonacci"
+         name = "compara_fibonacci">
+         <Group
+            location = "group:compara_fibonacci"
+            name = "compara_fibonacci">
+            <FileRef
+               location = "group:a.out">
+            </FileRef>
+            <FileRef
+               location = "group:main.cpp">
+            </FileRef>
+         </Group>
+      </Group>
       <FileRef
          location = "group:fibonacci_iterativo_variables/fibonacci_iterativo_variables.xcodeproj">
       </FileRef>
