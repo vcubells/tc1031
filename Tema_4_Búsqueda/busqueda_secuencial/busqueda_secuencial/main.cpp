@@ -55,6 +55,11 @@ void buscar(
     
     /* Imprimir el vector  */
     std::copy(elementos.begin(), elementos.end(), std::ostream_iterator<T>(std::cout, " "));
+    
+//    for (auto i = elementos.begin(); i < elementos.end(); ++i)
+//    {
+//        std::cout << i << " ";
+//    }
         
     std::cout << std::endl;
     
@@ -81,7 +86,7 @@ int main(int argc, const char * argv[]) {
     /* Definir semilla del generador random */
     srand((int) time(nullptr));
     
-    /* Búsqueda secuencia de números enteros */
+    /* Búsqueda secuencial de números enteros */
     buscar<int>(genera_int, Busqueda<int>::busquedaSecuencial);
     
     /* Búsqueda binaria de números punto flotante */

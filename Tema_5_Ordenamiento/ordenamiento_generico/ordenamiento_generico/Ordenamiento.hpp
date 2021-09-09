@@ -121,6 +121,7 @@ std::vector<T> Ordenamiento<T>::quicksort(std::vector<T> e, int primero, int ult
     int derecho = ultimo;
     
     //Se selecciona pivote
+    //T pivote = (ultimo + primero) / 2;
     T pivote = e[primero];
     
     if ( primero < ultimo) // Paso base

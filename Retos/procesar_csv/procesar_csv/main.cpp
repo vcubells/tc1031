@@ -14,6 +14,7 @@
 #include <vector>
 #include "Persona.hpp"
 
+// Función para procesar un archivo CSV
 auto read_csv_strings(std::string filename)
 {
     /* Crear un vector de vector de strings */
