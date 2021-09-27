@@ -68,6 +68,26 @@ int main(int argc, const char * argv[]) {
     std::cout << "(L) La lista tiene los siguientes elementos: " << std::endl;
     std::cout << *list << std::endl;
     
+    std::cout << std::endl;
+    std::cout << "--- Demostración de uso de la lista clonada ---" << std::endl;
+    std::cout << std::endl;
+    
+    /* Clonar la lista */
+    std::cout << "(C) Se clona la lista" << std::endl;
+    LinkedList<int> * list2 = list->clone();
+    
+    /* Mostrar el contenido de la lista 2 */
+    std::cout << "(L) La lista clonada tiene los siguientes elementos: " << std::endl;
+    std::cout << *list2 << std::endl;
+    
+    /* Liberar la memoria de la lista 2*/
+    delete list2;
+    std::cout << "(D) Se liberó la memoria de la lista clonada" << std::endl;
+    
+    std::cout << std::endl;
+    std::cout << "--- Fin de demostración de uso de la lista clonada ---" << std::endl;
+    std::cout << std::endl;
+    
     /* Obtener tamaño de la lista */
     std::cout << "(S) Tamaño de la lista: " << list->size() << " elementos" << std::endl;
     

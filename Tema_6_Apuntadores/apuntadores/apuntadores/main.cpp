@@ -16,11 +16,13 @@ int main(int argc, const char * argv[]) {
     p =  &i;
     
     std::cout << "Dirección de i = " << p << std::endl;
+    std::cout << "Dirección de p = " << &p << std::endl;
     
     /* Almacenar un valor en i = 10 */
-    *p = 10;
+    *p = 10; // i=10
     
     std::cout << "Valor de i = " << i << std::endl;
+    std::cout << "Valor de *p = " << *p << std::endl;
     
     /* Obtener la dirección de j */
     p = &j;

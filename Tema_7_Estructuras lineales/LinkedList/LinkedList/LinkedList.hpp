@@ -103,6 +103,9 @@ public:
     /* Sobrecarga del operador índice */
     Node<T> * operator [](const int);
     
+    /* Clonar una lista */
+    LinkedList<T> * clone();
+    
 };
 
 template <class T>
@@ -459,6 +462,30 @@ std::ostream & operator <<(std::ostream & os, const LinkedList<T> & list)
     }
     
     return os;
+}
+
+/* Clonar una lista
+ * Complejidad: O(n)
+ */
+template <class T>
+LinkedList<T> * LinkedList<T>::clone()
+{
+    /* Crear una lista vacía */
+    LinkedList<T> * list = new LinkedList<T>();
+    
+    /* Obtener una referencia al primer elemento */
+    Node<T> * tmp = this->_first;
+    
+    /* Recorrer la lista */
+    while (tmp != nullptr) {
+        /* Insertar un elemento en la lista nueva */
+        list->insert_back( tmp->getInfo() );
+        
+        /* Desplazarse al siguiente elemento */
+        tmp = tmp->getNext();
+    }
+    
+    return list;
 }
 
 #endif /* LinkedList_hpp */
