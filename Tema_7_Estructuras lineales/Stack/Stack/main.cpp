@@ -22,6 +22,8 @@ int main(int argc, const char * argv[]) {
         stack->push(i);
     }
     
+    stack->push(10);
+    
     /* Visualizar el contenido de la pila */
     std::cout << "(L) La pila tiene los siguientes elementos:" << std::endl;
     std::cout << *stack << std::endl;
@@ -31,6 +33,8 @@ int main(int argc, const char * argv[]) {
     
     /* Obtener el elemento superior de la pila */
     std::cout << "(T) El elemento superior de la pila es:" << *stack->top() << std::endl;
+    
+    
     
     /* Eliminar un elemento de la pila */
     Node<int> * node  = stack->pop();
@@ -56,3 +60,4 @@ int main(int argc, const char * argv[]) {
     
     return 0;
 }
+

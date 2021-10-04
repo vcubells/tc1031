@@ -118,6 +118,7 @@ int main(int argc, const char * argv[])
     
     /* Imprimir el vector */
     std::copy(personas.begin(), personas.end(), std::ostream_iterator<Persona>(std::cout));
+    
 
     return 0;
 }
