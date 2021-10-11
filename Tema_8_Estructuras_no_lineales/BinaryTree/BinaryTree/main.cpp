@@ -82,6 +82,10 @@ int main(int argc, const char * argv[]) {
     tree->postOrden();
     std::cout << std::endl;
     
+    std::cout << "(L) Se imprimen los nodos hojas del árbol" << std::endl;
+    tree->printLeaf();
+    std::cout << std::endl;
+    
     std::cout << "(C) Se eliminan todos los nodos del árbol" << std::endl;
     tree->clear();
     

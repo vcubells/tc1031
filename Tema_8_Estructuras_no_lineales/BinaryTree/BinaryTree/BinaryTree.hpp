@@ -48,6 +48,9 @@ public:
     int topN() const;
     int topN(TreeNode<T> *, int, int) const;
     
+    void printLeaf() const;
+    void printLeaf(TreeNode<T> *) const;
+    
 };
 
 template <class T>
@@ -220,6 +223,34 @@ int BinaryTree<T>::topN(TreeNode<T> * node, int n, int cont) const
     }
     
     return cont;
+}
+
+/* Imprimir los nodos hojas de un árbol */
+template <class T>
+void BinaryTree<T>::printLeaf() const
+{
+    this->printLeaf( this->root );
+}
+
+template <class T>
+void BinaryTree<T>::printLeaf(TreeNode<T> * node) const
+{
+    if (node != nullptr) {
+        TreeNode<T> * left = node->getLeft();
+        TreeNode<T> * right = node->getRight();
+        
+        if (left == nullptr && right == nullptr ) {
+            /* Procesar el nodo */
+            std::cout << *node << " ";
+        }
+        else {
+            /* Desplazarse a la izquierda */
+            printLeaf( left );
+            
+            /* Desplazarse a la derecha */
+            printLeaf( right );
+        }
+    }
 }
 
 
