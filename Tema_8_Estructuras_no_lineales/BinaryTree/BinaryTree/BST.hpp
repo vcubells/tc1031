@@ -22,11 +22,18 @@ public:
     bool insert(T &);
     bool insert(TreeNode<T> * );
     
+    int whatlevelamI(const T &) const;
+    
     
 private:
     /* Ocultar algunos métodos heredados */
     //using BinaryTree<T>::insert;
 };
+
+/*
+ Complejidad: O(log n) si el árbol está balanceado
+              O(n) si el árbol está desbalanceado
+ */
 template <class T>
 TreeNode<T> * BST<T>::search(const T & value) const
 {
@@ -44,6 +51,10 @@ TreeNode<T> * BST<T>::search(const T & value) const
     return nullptr;
 }
 
+/*
+ Complejidad: O(log n) si el árbol está balanceado
+              O(n) si el árbol está desbalanceado
+ */
 template <class T>
 bool BST<T>::insert(T & value)
 {
@@ -100,5 +111,32 @@ bool BST<T>::insert(TreeNode<T> * node )
     return true;
 }
 
+/*
+ Complejidad: O(log n) si el árbol está balanceado
+              O(n) si el árbol está desbalanceado
+ */
+template <class T>
+int BST<T>::whatlevelamI(const T & value) const
+{
+    int level = 0;
+    
+    TreeNode<T> * aux = this->root;
+    
+    while (aux != nullptr) {
+        level++;
+        if (aux->getInfo() == value) {
+            return level;
+        }
+        else {
+            aux = aux->getInfo() > value ? aux->getLeft() : aux->getRight();
+        }
+    }
+    
+    if (aux == nullptr) {
+        level = 0;
+    }
+    
+    return level;
+}
 
 #endif /* BST_hpp */

@@ -32,7 +32,7 @@ std::vector < std::vector<int> > genera_grafo_no_dirigido(int n)
     
     grafo[3][0] = 1;  // D <-> A
     
-    grafo[4][2] = 1;  // D <-> C
+    grafo[4][2] = 1;  // E <-> C
     
     grafo[5][2] = 1;  // F <-> C
     
@@ -135,7 +135,7 @@ int main(int argc, const char * argv[]) {
     /* Visualizar el grafo dirigido */
     visualizar(dirigido, vertices);
     
-    /* Obtener las aristas del grafo no dirigido */
+    /* Obtener las aristas del grafo dirigido */
     for (int i = 0; i < numero_vertices; ++i) {
         for (int j = 0; j < numero_vertices; ++j) {
             if (dirigido[i][j] == 1) {

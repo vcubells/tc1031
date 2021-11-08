@@ -9,6 +9,7 @@
 #define BinaryTree_hpp
 
 #include <iostream>
+#include <queue>
 #include "TreeNode.hpp"
 
 template <class T>
@@ -50,6 +51,9 @@ public:
     
     void printLeaf() const;
     void printLeaf(TreeNode<T> *) const;
+    
+    void bfs();
+    void bfs(TreeNode<T> *);
     
 };
 
@@ -211,7 +215,7 @@ int BinaryTree<T>::topN(TreeNode<T> * node, int n, int cont) const
     if (node != nullptr && cont < n) {
         
         /* Desplazarse a la izquierda */
-        cont = topN( node->getLeft(), n, cont );
+        cont = topN( node->getRight(), n, cont );
          
         if (cont < n ) {
             std::cout << *node << " (" << ++cont << ") ";
@@ -219,7 +223,7 @@ int BinaryTree<T>::topN(TreeNode<T> * node, int n, int cont) const
         else return cont;
         
         /* Desplazarse a la derecha */
-        cont = topN( node->getRight(), n, cont );
+        cont = topN( node->getLeft(), n, cont );
     }
     
     return cont;
@@ -253,5 +257,65 @@ void BinaryTree<T>::printLeaf(TreeNode<T> * node) const
     }
 }
 
+/* Reccorido de un árbol por niveles */
+template <class T>
+void BinaryTree<T>::bfs()
+{
+    /* Establecer el nivel de la raíz en 1 */
+    if (!empty()) {
+        this->root->setLevel(1);
+        this->bfs( this->root );
+    }
+}
+
+template <class T>
+void BinaryTree<T>::bfs(TreeNode<T> * node)
+{
+    std::queue< TreeNode<T> * > q;
+    
+    q.push(node);
+    
+    TreeNode<T> * aux;
+    
+    int current_level = 1;
+    
+    std::cout << std::endl << "Level " << current_level << ": ";
+    
+    int level = 0;
+    
+    while (!q.empty()) {
+        
+        /* Sacar el primer elemento de la cola */
+        aux = q.front();
+        q.pop();
+        
+        level = aux->getLevel();
+        
+        /* Insertar en la cola el hijo izquierdo */
+        TreeNode<T> * left = aux->getLeft();
+        
+        if (left != nullptr) {
+            left->setLevel( level + 1);
+            q.push(left);
+        }
+        
+        /* Insertar en la cola el hijo derecho */
+        TreeNode<T> * right = aux->getRight();
+        
+        if (right != nullptr) {
+            right->setLevel(level + 1);
+            q.push(right);
+        }
+        
+        /* Si cambiamos de nivel, insertar un salto de linea */
+        if (current_level != level ) {
+            current_level += 1;
+            std::cout << std::endl << "Level " << current_level << ": ";
+        }
+        
+        /* Imprimiendo el nodo */
+        std::cout << *aux << "  ";
+    }
+}
 
 #endif /* BinaryTree_hpp */

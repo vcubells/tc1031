@@ -7,6 +7,7 @@
 
 #include "HashMap.hpp"
 #include <vector>
+#include <iostream>
 
 template <class K, class V>
 class HashMap {
@@ -31,6 +32,9 @@ public:
     bool put(K,V);
     int rehash(int, int);
     V get(K);
+    
+    template <typename Kn, typename Vn>
+    friend std::ostream & operator <<(std::ostream & os, const HashMap<Kn,Vn> & hm);
 };
 
 template <class K, class V>
@@ -156,4 +160,16 @@ V HashMap<K,V>::get(K key)
         return -1;
 }
 
+template <class K, class V>
+std::ostream & operator <<(std::ostream & os, const HashMap<K,V> & hm)
+{
+    for (int i = 0; i < hm._capacity; ++i) {
+        if (hm._status[i] == "ocupado") {
+            os << hm._keys[i] << " : " << hm._values[i] << std::endl;
+            
+        }
+    }
+    
+    return os;
+}
 

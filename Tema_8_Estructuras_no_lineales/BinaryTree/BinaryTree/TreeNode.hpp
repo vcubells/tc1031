@@ -19,6 +19,8 @@ private:
     
     TreeNode<T> * parent = nullptr;
     
+    int level = 0;
+    
 public:
     /* Constructores */
     TreeNode() { };
@@ -40,6 +42,9 @@ public:
     
     TreeNode<T> * getParent() const { return parent; }
     void setParent(TreeNode<T> * value) { parent = value; }
+    
+    int getLevel() const { return level; }
+    void setLevel(int value) { level = value; }
     
     /* Sobrecarga operador == */
     bool operator ==(TreeNode<T> &);

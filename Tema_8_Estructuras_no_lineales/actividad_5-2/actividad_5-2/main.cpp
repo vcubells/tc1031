@@ -72,6 +72,29 @@ auto read_csv(std::string filename)
     return lineas;
 }
 
+std::map<std::string, int> conexionesPorDia(std::string fecha, std::vector<Registro> registros)
+{
+    std::map<std::string, int> frecuencias;
+    
+    for (auto r : registros) {
+        
+        if (r.getFecha() == fecha) {
+            
+            std::string destino = r.getDestino();
+            
+            std::size_t found_reto_com = destino.find("reto.com");
+            
+            std::size_t found_ = destino.find("-");
+            
+            if (found_reto_com == std::string::npos && found_ == std::string::npos) {
+                frecuencias[destino]++;
+            }
+        }
+    }
+    
+    return frecuencias;
+}
+
 
 int main(int argc, const char * argv[]) {
     
@@ -96,53 +119,66 @@ int main(int argc, const char * argv[]) {
     
     /* Crear el conjunto y el diccionario */
     
-    std::cout << "--- 1. Set de dominios ----" << std::endl;
+//    std::cout << "--- 1. Set de dominios ----" << std::endl;
+//
+//    std::set<std::string> dominios;
     
-    std::set<std::string> dominios;
+    //std::map<std::string, std::string> mapa;
     
-    std::map<std::string, std::string> mapa;
     
-    for (auto r : registros) {
-        std::string origen = r.getOrigen();
+//    for (auto r : registros) {
+//        std::string origen = r.getOrigen();
+//
+//        std::size_t found_reto_com = origen.find("reto.com");
+//
+//        std::size_t found_ = origen.find("-");
+//
+//        if (found_reto_com == std::string::npos && found_ == std::string::npos) {
+//            dominios.insert(origen);
+//
+//            /* Insertar en el Hash */
+//            //ConexionesComputadoras conexiones(r.getIPOrigen(), origen);
+//            mapa.insert(std::make_pair(origen, r.getIPOrigen()));
+//        }
         
-        std::size_t found = origen.find("reto.com");
-        
-        if (found == std::string::npos) {
-            dominios.insert(origen);
-            
-            /* Insertar en el Hash */
-            //ConexionesComputadoras conexiones(r.getIPOrigen(), origen);
-            mapa.insert(std::make_pair(origen, r.getIPOrigen()));
-        }
-        
-        std::string destino = r.getDestino();
-        
-        found = destino.find("reto.com");
-        
-        if (found == std::string::npos) {
-            dominios.insert(destino);
-            
-            /* Insertar en el Hash */
-            //ConexionesComputadoras conexiones(r.getIPDestino(), destino);
-            mapa.insert(std::make_pair(destino, r.getIPDestino() ));
-        }
-    }
+//        std::string destino = r.getDestino();
+//
+//        std::size_t found_reto_com = destino.find("reto.com");
+//
+//        std::size_t found_ = destino.find("-");
+//
+//        if (found_reto_com == std::string::npos && found_ == std::string::npos) {
+//            //dominios.insert(destino);
+//
+//            /* Insertar en el Hash */
+//            //ConexionesComputadoras conexiones(r.getIPDestino(), destino);
+//            //mapa.insert(std::make_pair(destino, r.getIPDestino() ));
+//
+//        }
+//    }
     
-    for (auto d : dominios) {
-        std::cout << d << std::endl;
+//    for (auto d : dominios) {
+//        std::cout << d << std::endl;
+//    }
+    
+    std::map<std::string, int> frecuencias = conexionesPorDia("10-8-2020", registros);
+    
+    for (auto p : frecuencias) {
+        std::cout << p.first << " : " << p.second << std::endl;
     }
         
     std::cout << std::endl;
     
-    std::cout << "--- 2. IPs de dominios raros ----" << std::endl;
-    
-    std::cout << mapa["1cvh4vcwcer9x7me4lr1.net"] << std::endl;
-    std::cout << mapa["gzk5twsf423mak2wmldj.ru"] << std::endl;
+//    std::cout << "--- 2. IPs de dominios raros ----" << std::endl;
+//
+//    std::cout << mapa["1cvh4vcwcer9x7me4lr1.net"] << std::endl;
+//    std::cout << mapa["gzk5twsf423mak2wmldj.ru"] << std::endl;
     
     
     /* Eliminar todos los registros */
     registros.clear();
-    dominios.clear();
+    //dominios.clear();
+    frecuencias.clear();
     
     return 0;
 }

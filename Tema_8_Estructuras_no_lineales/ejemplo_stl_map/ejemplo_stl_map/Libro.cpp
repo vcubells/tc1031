@@ -7,7 +7,7 @@
 
 #include "Libro.hpp"
 
-std::ostream & operator<<(std::ostream & os, Libro & libro)
+std::ostream & operator<<(std::ostream & os, const Libro & libro)
 {
     os << libro.isbn << " - " << libro.titulo << "( " << libro.paginas << ")" << std::endl;
     

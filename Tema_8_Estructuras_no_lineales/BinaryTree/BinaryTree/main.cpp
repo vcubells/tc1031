@@ -162,6 +162,49 @@ int main(int argc, const char * argv[]) {
     /* Buscar si el nodo existe */
     std::cout << (exist ? "(S) El valor 20 se encontró" : "(S) El valor 20 no existe") << std::endl;
     
+    TreeNode<int> * naa = new TreeNode<int>(11);
+    TreeNode<int> * nab = new TreeNode<int>(18);
+    TreeNode<int> * nac = new TreeNode<int>(15);
+    
+    bst->insert(naa);
+    bst->insert(nab);
+    bst->insert(nac);
+    
+    std::cout << "(V) Se imprime el BST por niveles" << std::endl;
+    bst->bfs();
+    std::cout << std::endl;
+    
+    /* Obtener el nivel de un nodo de manera directa */
+    int level = nac->getLevel();
+
+    std::cout << "(L) El nivel de " <<  *nac << " es: " << level << std::endl;
+    
+    exist = bst->search(8);
+    if (exist) {
+        std::cout << "(L) El nivel de 8 es: " << exist->getLevel() << std::endl;
+    }
+    else {
+        std::cout << "(L) El 8 no se encuentra" << std::endl;
+    }
+    
+    
+    /* Obtener el nivel de un nodo en tiempo real con una búsqueda */
+    level = bst->whatlevelamI(20);
+    if (level > 0) {
+        std::cout << "(L) El nivel de 20 es: " << level << std::endl;
+    }
+    else {
+        std::cout << "(L) El 20 no se encuentra" << std::endl;
+    }
+    
+    level = bst->whatlevelamI(10);
+    if (level > 0) {
+        std::cout << "(L) El nivel de 10 es: " << level << std::endl;
+    }
+    else {
+        std::cout << "(L) El 1 no se encuentra" << std::endl;
+    }
+    
     std::cout << "(C) Se eliminan todos los nodos del árbol" << std::endl;
     bst->clear();
     

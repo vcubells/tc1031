@@ -9,6 +9,17 @@
 #include <map>
 #include "Libro.hpp"
 
+map<string,int> conexionesPorDia(string fecha)
+{
+    // Crear el mapa
+    map<string,int> conexiones;
+    
+    // Procesamiento
+    
+    //Regresar el mapa
+    return conexiones;
+}
+
 int main(int argc, const char * argv[]) {
     
     std::map<int, std::string> personas;
@@ -43,7 +54,7 @@ int main(int argc, const char * argv[]) {
     
     std::map<std::string, Libro> libros;
     
-    libros["1"] = Libro("1", "El señor de los anillos", 700);
+    libros["5"] = Libro("5", "El señor de los anillos", 700);
     libros["2"] = Libro("2", "El capital", 550);
     libros["3"] = Libro("3", "El arte de la guerra", 345);
     
@@ -65,7 +76,9 @@ int main(int argc, const char * argv[]) {
     }
     
     /* Mapa con una estructura lineal */
-    std::map<std::string, std::vector<Libro> > combinado;
+    //std::map<std::string, std::vector<Libro> > combinado;
+    
+    map<string, int> m = conexionesPorDia("10-11-2021");
     
     return 0;
 }

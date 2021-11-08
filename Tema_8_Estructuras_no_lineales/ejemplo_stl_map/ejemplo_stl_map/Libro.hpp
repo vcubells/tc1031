@@ -29,7 +29,7 @@ public:
     
     ~Libro() {}
     
-    friend std::ostream & operator<<(std::ostream &, Libro &);
+    friend std::ostream & operator<<(std::ostream &, const Libro &);
 };
 
 #endif /* Libro_hpp */
