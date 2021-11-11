@@ -14,6 +14,7 @@
 #include <map>
 #include "Registro.hpp"
 #include "ConexionesComputadoras.hpp"
+#include "/Users/vcubells/Developer/GitHub/tc1031/Tema_8_Estructuras_no_lineales/BinaryTree/BinaryTree/BST.hpp"
 
 auto read_csv(std::string filename)
 {
@@ -95,6 +96,46 @@ std::map<std::string, int> conexionesPorDia(std::string fecha, std::vector<Regis
     return frecuencias;
 }
 
+
+ class Info
+ {
+    private:
+        std::string dominio = "";
+        int frecuencia = 0;
+ public:
+     Info() {}
+     Info(std::string _dominio, int _frecuencia) : dominio(_dominio), frecuencia(_frecuencia) {}
+     
+     bool operator <(Info & otro)
+     {
+         return this->frecuencia < otro.frecuencia;
+     }
+     
+     bool operator >(Info & otro)
+     {
+         return this->frecuencia > otro.frecuencia;
+     }
+     
+     bool operator ==(Info & otro)
+     {
+         return this->dominio == otro.dominio;
+     }
+ }
+
+void top(int n, std::string fecha)
+{
+    std::map<std::string, int> frecuencias = conexionesPorDia(fecha, registros);
+    
+    BST<Info> * bst = new BST<Info>();
+    
+    for (auto entry : frecuencias) {
+        bst->insert(Info(entry.first, entry.second));
+    }
+    
+    bst->topN(bst->getRoot(), n, 0);
+    
+    delete bst;
+}
 
 int main(int argc, const char * argv[]) {
     
