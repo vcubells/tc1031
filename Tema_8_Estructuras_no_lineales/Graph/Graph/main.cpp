@@ -38,6 +38,18 @@ int main(int argc, const char * argv[]) {
     /* Visualizando el grafo */
     std::cout << *graph << std::endl;
     
+    /* Buscar un nodo */
+    char value = 'C';
+    
+    auto found = graph->search(c);
+    
+    if (found) {
+        std::cout << " El nodo " << "existe" << std::endl;
+    }
+    else {
+        std::cout << " El nodo " << "no existe" << std::endl;
+    }
+    
     /* Eliminar el grafo */
     delete graph;
 

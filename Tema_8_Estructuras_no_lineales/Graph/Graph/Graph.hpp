@@ -28,6 +28,9 @@ public:
     void addEdge(Vertex<V,E> *, Vertex<V,E> *, const E & );
     void removeEdge(Vertex<V,E> *, Vertex<V,E> *, const E & );
     
+    Vertex<V, E> * search(const V & );
+    Vertex<V, E> * search(const Vertex<V,E> *);
+    
     template <class Vn, class En>
     friend std::ostream & operator <<(std::ostream &, const Graph<Vn,En> &);
 };
@@ -91,6 +94,37 @@ void Graph<V,E>::removeEdge(Vertex<V,E> * source, Vertex<V,E> * target, const E 
         vertex->removeEdge(to_remove);
     }
     
+}
+
+template <class V, class E>
+Vertex<V, E> * Graph<V,E>::search(const V & value )
+{
+    /* Crear un nodo */
+    Vertex<V,E> * vertex = new Vertex<V, E>(value);
+    
+    /* Buscar vertex */
+    auto node = search(vertex);
+    
+    /* Elimiinar el nodo temporal */
+    delete vertex;
+    
+    /* Regresar el nodo encontrado */
+    return node;
+}
+
+template <class V, class E>
+Vertex<V, E> * Graph<V,E>::search(const Vertex<V,E> * value )
+{
+    /* Buscar vertex */
+    auto node = find(nodes.begin(), nodes.end(), value);
+    
+    Vertex<V,E> * vertex = nullptr;
+    
+    if (node != nodes.end()) {
+        vertex = (*node);
+    };
+    
+    return vertex;
 }
 
 template <class V, class E>

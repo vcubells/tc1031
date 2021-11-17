@@ -30,6 +30,8 @@ public:
     void addEdge(Edge<V,E> *);
     void removeEdge(Edge<V,E> *);
     
+    bool operator ==(const Vertex<V,E> &);
+    
     template <class Vn, class En>
     friend std::ostream & operator <<(std::ostream &, const Vertex<Vn, En> &);
     
@@ -74,6 +76,12 @@ void Vertex<V,E>::removeEdge(Edge<V,E> * edge)
 {
     auto to_delete = find(edges.begin(), edges.end(), edge);
     edges.erase(to_delete);
+}
+
+template <class V, class E>
+bool Vertex<V,E>::operator ==(const Vertex<V,E> & value)
+{
+    return info == value.getInfo();
 }
 
 template <class V, class E>
