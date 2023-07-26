@@ -60,7 +60,7 @@ int main(int argc, const char * argv[]) {
     std::list< std::pair<int, std::string> > lista_par;
     lista_par.push_back(par);
     
-    std::cout << "--- List < Par <int, string > ----" << std::endl;
+    std::cout << "--- List < Par <int, string > > ----" << std::endl;
     std::list<std::pair<int, std::string> > ::const_iterator
         lpit (lista_par.begin()),
         lpend(lista_par.end());
