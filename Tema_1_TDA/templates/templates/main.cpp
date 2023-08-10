@@ -49,7 +49,17 @@ int main(int argc, const char * argv[]) {
     Libro l2(2);
     
     /* Comparar dos libros */
-    std::cout << "El Libro menor es: " << menor(l1, l2) << std::endl;
+    Libro r = menor(l1, l2);
+    
+    /* Imprimir el Id del libro menor */
+    std::cout << "El Libro menor es: " << r.getId() << std::endl;
+    
+    /* Imprimir todo el libro con un método */
+    std::cout << "Los datos del libro son: " << std::endl;
+    r.print();
+    
+    /* Comparar dos libros con la sobrecarga del operador */
+    std::cout << "¿Libro 1 es menor que Libro 2? = " << l1.operator<(l2) << std::endl;
         
     return 0;
 }

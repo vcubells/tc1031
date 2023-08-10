@@ -18,7 +18,10 @@ public:
     
     int getId();
     
+    /* tipo nombre_funcion (Tipo & nombre_var) */
     bool operator <(Libro & libro);
+    
+    void print();
     
     friend std::ostream & operator << (std::ostream & os, const Libro & libro);
 };

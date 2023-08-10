@@ -19,11 +19,21 @@ int Libro::getId()
     return id;
 }
 
+/*
+ int a=1;
+ int b=4;
+  a < b es lo mismo que a.operator<(b)
+ */
 bool Libro::operator <(Libro & libro)
 {
     return id < libro.id;
     // return autor < libro.autor
     // return titulo < libro.titulo
+}
+
+void Libro::print()
+{
+    std::cout << "Id:" << id << std::endl;
 }
 
 std::ostream & operator << (std::ostream & os, const Libro & libro)
