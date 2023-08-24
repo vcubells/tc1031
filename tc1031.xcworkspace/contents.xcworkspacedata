@@ -91,6 +91,9 @@
       location = "group:Tema_4_Bu&#x301;squeda"
       name = "Tema_4_Bu&#x301;squeda">
       <FileRef
+         location = "group:busqueda_basica/busqueda_basica.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:busqueda_secuencial/busqueda_secuencial.xcodeproj">
       </FileRef>
    </Group>
