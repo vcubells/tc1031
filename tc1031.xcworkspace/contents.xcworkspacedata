@@ -166,9 +166,6 @@
             location = "group:compara_fibonacci"
             name = "compara_fibonacci">
             <FileRef
-               location = "group:a.out">
-            </FileRef>
-            <FileRef
                location = "group:main.cpp">
             </FileRef>
          </Group>

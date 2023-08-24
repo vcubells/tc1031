@@ -25,7 +25,7 @@
  Ejemplo de como se resuelve la ecuación de recurrencia para obtener la complejidad
 
 T(0) = 0
-F(1) = 1
+T(1) = 1
 T(n) = T(n-1) + T(n-2)
 
 T(0) = 0

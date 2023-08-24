@@ -23,7 +23,7 @@
  
  ...
  
- T(n) = T(n-k) + k * c2
+ T(k) = T(n-k) + k * c2
  
  Asumiendo k = n, tenemos
  
