@@ -51,15 +51,15 @@ int main(int argc, const char * argv[]) {
     char algoritmo = *(argv[2]);
     int encontrado = 0;
     
-    srand(time(NULL));
+    srand((unsigned int) time(NULL));
     
-    const int N = 100000;
+    const int N = 1000000;
     
     int vector[N];
     
     /* Inicializar el vector con números aleatorios */
     for (int i = 0; i < N; ++i) {
-        vector[i] = rand() % 10000000;
+        vector[i] = i; // rand() % 10000;
     }
     
     switch (algoritmo) {
