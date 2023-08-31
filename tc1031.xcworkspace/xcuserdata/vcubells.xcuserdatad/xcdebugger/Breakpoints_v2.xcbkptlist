@@ -20,5 +20,21 @@
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BE0D7B4D-372F-4137-A98A-CE5A88533D9E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tema_5_Ordenamiento/ordenamiento_basico/ordenamiento_basico/main.cpp"
+            startingColumnNumber = "21"
+            endingColumnNumber = "22"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "burbuja(v, n)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

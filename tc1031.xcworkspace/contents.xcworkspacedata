@@ -80,26 +80,9 @@
    <Group
       location = "group:Tema_5_Ordenamiento"
       name = "Tema_5_Ordenamiento">
-      <Group
-         location = "group:ordenamiento_basico"
-         name = "ordenamiento_basico">
-         <Group
-            location = "group:ordenamiento_basico"
-            name = "ordenamiento_basico">
-            <FileRef
-               location = "group:Libro.cpp">
-            </FileRef>
-            <FileRef
-               location = "group:Libro.hpp">
-            </FileRef>
-            <FileRef
-               location = "group:main.cpp">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:ordenamiento_basico.xcodeproj">
-         </FileRef>
-      </Group>
+      <FileRef
+         location = "group:ordenamiento_basico/ordenamiento_basico.xcodeproj">
+      </FileRef>
       <FileRef
          location = "group:biblioteca/biblioteca.xcodeproj">
       </FileRef>
