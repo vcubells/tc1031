@@ -17,6 +17,7 @@ public:
     Libro(int _isbn) : ISBN(_isbn) {};
     bool operator<(Libro &);
     bool operator>(Libro &);
+    bool operator<=(Libro &);
     
     friend std::ostream & operator<<(std::ostream & os, const Libro & libro);
 };

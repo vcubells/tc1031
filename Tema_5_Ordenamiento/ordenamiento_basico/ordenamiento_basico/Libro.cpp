@@ -17,6 +17,11 @@ bool Libro::operator>(Libro & libro)
     return ISBN > libro.ISBN;
 }
 
+bool Libro::operator<=(Libro & libro)
+{
+    return ISBN <= libro.ISBN;
+}
+
 /*
  std::copy(vector, vector+N, std::ostream_iterator<Libro>(std::cout, " "));
  

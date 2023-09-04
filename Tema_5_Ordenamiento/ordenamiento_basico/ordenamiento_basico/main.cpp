@@ -81,6 +81,65 @@ void seleccion(T x[], int n, bool compara(T,T))
     }
 }
 
+template <class T>
+void quicksort (T a[], int primero, int ultimo)
+{
+    int izquierdo = primero;
+    int derecho = ultimo;
+    
+    //Se selecciona pivote
+    T pivote = a[primero];
+    
+    if ( primero < ultimo) // Paso base
+    {
+        // partición
+        while ( izquierdo < derecho)
+        {
+            while ( (izquierdo < derecho) && (a[izquierdo] <= pivote )) izquierdo++;
+            while ( a[derecho] > pivote ) derecho--;
+            if ( izquierdo < derecho) // se intercambian los contenidos
+            {
+                std::swap(a[izquierdo], a[derecho]);
+            }
+        }
+        // Se intercambia el pivote con el elemento de la posición derecha
+        std::swap(a[primero], a[derecho]);
+        
+        // Paso recursivo
+        quicksort ( a, primero, derecho-1);
+        quicksort ( a, izquierdo, ultimo);
+    }
+}
+
+template <class T>
+void mergesort (T v[], int l, int n)
+{
+    int m = (n+l)/2;
+    if (n > l)
+    {
+        mergesort (v, l, m);
+        mergesort (v, m+1, n);
+        merge (v, l, m, n);
+    }
+}
+
+template <class T>
+void merge (T v[], int l, int m, int n)
+{
+    int i, j, k;
+    T aux[n];
+    
+    for (i=m+1; i>l; i--)         // Vector auxiliar O(n)
+        aux[i-1] = v[i-1];
+    for (j=m; j<n; j++)
+        aux[n+m-j] = v[j+1];
+    for (k=l; k<=n; k++)         // Mezcla O(n)
+        if (aux[i]<aux[j])
+            v[k] = aux[i++];
+        else
+            v[k] = aux[j--];
+}
+
 int main(int argc, const char * argv[]) {
     if (argc < 2) {
         std::cout << "Use: a.out algoritmo" << std::endl;
@@ -116,6 +175,12 @@ int main(int argc, const char * argv[]) {
             break;
         case 'S':
             seleccion(vector, N, asc);
+            break;
+        case 'Q':
+            quicksort(vector, 0, N);
+            break;
+        case 'M':
+            mergesort(vector, 0, N);
             break;
         default:
             std::cout << "Use: a.out algoritmo" << std::endl;
