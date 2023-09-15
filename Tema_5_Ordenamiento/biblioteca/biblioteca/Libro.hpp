@@ -81,6 +81,8 @@ public:
     static bool compara_año_desc(Libro, Libro);
     static bool compara_año_eq(Libro, Libro);
     
+    bool operator<(Libro &);
+    
     friend std::ostream & operator<<(std::ostream & os, const Libro & libro);
 };
 

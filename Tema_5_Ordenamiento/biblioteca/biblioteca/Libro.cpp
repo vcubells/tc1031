@@ -83,6 +83,25 @@ bool Libro::compara_año_eq(Libro a, Libro b)
     return a.Año() == b.Año();
 }
 
+/*
+ Libro l1();
+ Libro l2()
+ 
+ 
+ // if ( l1.operator<(l2) )
+ if (l1 < l2) {
+    cout << "l1 es menor" << endl;
+ }
+ else {
+    cout << "l2 es menor" << endl;
+ }
+ 
+ */
+
+bool Libro::operator<(Libro & b)
+{
+    return (titulo < b.titulo) && (año < b.año);
+}
 
 std::ostream & operator<<(std::ostream & os, const Libro & libro)
 {

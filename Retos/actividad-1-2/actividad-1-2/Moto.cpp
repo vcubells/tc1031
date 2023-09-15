@@ -10,12 +10,16 @@
 
 std::ostream & Moto::print(std::ostream & os) const
 {
-    os << "Moto:" << tipo << std::endl;
+    Auto::print(os);
+    
+    os << ", " << cilindraje;
     
     return os;
 }
 
 std::ostream & operator<<(std::ostream & os, const Moto & coche)
 {
-    return coche.print(os);
+    coche.print(os);
+    os << std::endl;
+    return os;
 }

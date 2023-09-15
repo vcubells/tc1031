@@ -13,12 +13,13 @@
 
 class Camioneta: public Auto {
 private:
-    std::string traccion;
+    std::string traccion{"Sin definir"};
 public:
     Camioneta() {
         tipo = "Camioneta";
-        traccion = "4WD";
-    }
+    };
+    Camioneta(std::string _codigo, std::string _marca, int _modelo, int _kms, std::string _traccion):
+    Auto(_codigo, _marca, _modelo, _kms), traccion(_traccion) {}
     
     virtual std::ostream & print(std::ostream &) const;
     

@@ -7,14 +7,42 @@
 
 #include "Auto.hpp"
 
+int Auto::getModelo()
+{
+    return modelo;
+}
+
+int Auto::getKms()
+{
+    return kms;
+}
+
+bool Auto::estaComprado()
+{
+    return comprado;
+}
+
+void Auto::setComprado()
+{
+    comprado = true;
+}
+
+bool Auto::operator==(const Auto & _auto)
+{
+    return codigo == _auto.codigo;
+}
+
 std::ostream & Auto::print(std::ostream & os) const
 {
-    os << "Auto:" << tipo << std::endl;
+    os << tipo << ": " << marca << ", " << modelo << ", " << kms << " kms";
     
     return os;
 }
 
 std::ostream & operator<<(std::ostream & os, const Auto & coche)
 {
-    return coche.print(os);
+    
+    coche.print(os);
+    os << std::endl;
+    return os;
 }

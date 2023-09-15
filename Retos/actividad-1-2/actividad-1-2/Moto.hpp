@@ -12,10 +12,14 @@
 #include "Auto.hpp"
 
 class Moto: public Auto {
+private:
+    int cilindraje {0};
 public:
     Moto() {
         tipo = "Moto";
-    }
+    };
+    Moto(std::string _codigo, std::string _marca, int _modelo, int _kms, int _cilindraje):
+    Auto(_codigo, _marca, _modelo, _kms), cilindraje(_cilindraje) {}
     
     virtual std::ostream & print(std::ostream &) const;
     
