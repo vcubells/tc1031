@@ -24,6 +24,12 @@ public:
     
     int whatlevelamI(const T &) const;
     
+    TreeNode<T> * predecesor(TreeNode<T> * ) const;
+    TreeNode<T> * sucesor(TreeNode<T> * ) const;
+    TreeNode<T> * remove(T &);
+    TreeNode<T> * remove(TreeNode<T> *);
+    
+    
     
 private:
     /* Ocultar algunos métodos heredados */
@@ -137,6 +143,78 @@ int BST<T>::whatlevelamI(const T & value) const
     }
     
     return level;
+}
+
+
+/* Encontrar el predecesor de un nodo */
+template <class T>
+TreeNode<T> * BST<T>::predecesor(TreeNode<T> * actual) const
+{
+    TreeNode<T> * tmp = actual->getLeft();
+    
+    while( tmp->getRight() != nullptr) {
+        tmp=tmp->getRight();
+    }
+    
+    return tmp;
+}
+
+/* Encontrar el sucesor de un nodo */
+template <class T>
+TreeNode<T> * BST<T>::sucesor(TreeNode<T> * actual) const
+{
+    TreeNode<T> * tmp = actual->getRight();
+    
+    while( tmp->getLeft() != nullptr) {
+        tmp=tmp->getLeft();
+    }
+    
+    return  tmp;
+}
+
+/* Eliminar un nodo del árbol */
+template <class T>
+TreeNode<T> * BST<T>::remove(T & value)
+{
+    TreeNode<T> * node = this->search(value);
+    
+    return this->remove(node);
+}
+
+/* Eliminar un nodo del árbol */
+template <class T>
+TreeNode<T> * BST<T>::remove(TreeNode<T> * node)
+{
+    if (node != nullptr)
+    {
+        TreeNode<T> * left = node->getLeft();
+        TreeNode<T> * right = node->getRight();
+        TreeNode<T> * parent = node->getParent();
+        
+        // Verificar si tiene dos hijos
+        if (left != nullptr && right != nullptr) {
+            TreeNode<T> * pred = predecesor(node);
+            T info = pred->getInfo();
+            node->setInfo(info);
+            node = remove(pred);
+        }
+        // Verificar si tiene un hijo a la izquierda
+        else if (left != nullptr) {
+            (parent != nullptr && parent->getLeft() == node) ? parent->setLeft(left) : parent->setRight(left);
+            node->setLeft(nullptr);
+        }
+        // Verificar si tiene un hijo a la derecha
+        else if (right != nullptr) {
+            (parent != nullptr && parent->getLeft() == node) ? parent->setLeft(right) : parent->setRight(right);
+            node->setRight(nullptr);
+        }
+        // No tiene hijos
+        else {
+            (parent != nullptr && parent->getLeft() == node) ? parent->setLeft(nullptr) : parent->setRight(nullptr);
+        }
+    }
+    
+    return node;
 }
 
 #endif /* BST_hpp */

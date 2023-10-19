@@ -205,6 +205,19 @@ int main(int argc, const char * argv[]) {
         std::cout << "(L) El 1 no se encuentra" << std::endl;
     }
     
+    int remove_value = 8;
+    TreeNode<int> * deleted = bst->remove(remove_value);
+    
+    if (deleted != nullptr)
+    {
+        std::cout << "(R) Se eliminó el nodo con valor " << *deleted << std::endl;
+        delete deleted;
+    }
+    
+    std::cout << "(V) Se imprime el BST por niveles" << std::endl;
+    bst->bfs();
+    std::cout << std::endl;
+    
     std::cout << "(C) Se eliminan todos los nodos del árbol" << std::endl;
     bst->clear();
     

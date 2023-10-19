@@ -80,6 +80,13 @@ int main(int argc, const char * argv[]) {
     std::cout << "(L) La lista clonada tiene los siguientes elementos: " << std::endl;
     std::cout << *list2 << std::endl;
     
+    /* Borrar los elementos de un rango */
+    list2->deleteRange(0, 2);
+    
+    /* Mostrar el contenido de la lista 2 después de borrar un rango*/
+    std::cout << "(L) La lista clonada tiene los siguientes elementos: " << std::endl;
+    std::cout << *list2 << std::endl;
+    
     /* Liberar la memoria de la lista 2*/
     delete list2;
     std::cout << "(D) Se liberó la memoria de la lista clonada" << std::endl;

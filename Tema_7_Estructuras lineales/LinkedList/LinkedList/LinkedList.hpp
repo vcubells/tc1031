@@ -106,6 +106,9 @@ public:
     /* Clonar una lista */
     LinkedList<T> * clone();
     
+    /* Eliminar un rango de elementos */
+    void deleteRange(int, int);
+    
 };
 
 template <class T>
@@ -486,6 +489,17 @@ LinkedList<T> * LinkedList<T>::clone()
     }
     
     return list;
+}
+
+/* Eliminar un rango de elementos */
+template <class T>
+void LinkedList<T>::deleteRange(int from, int to)
+{
+    /* Validar que los índices estén en el rango correcto */
+    
+    for (int i = to; i >= from; --i) {
+        delete this->remove(i);
+    }
 }
 
 #endif /* LinkedList_hpp */
