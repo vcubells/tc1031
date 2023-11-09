@@ -16,6 +16,7 @@ template <class V, class E>
 class Vertex {
     V info;
     std::vector< Edge<V, E> * > edges;
+    int incidentes_entrada = 0;
     
 public:
     Vertex() {}
@@ -26,6 +27,10 @@ public:
     void setInfo(const V &);
     
     std::vector< Edge<V,E> * > * getEdges();
+    
+    int getIncidentesEntrada();
+    void incIncidentesEntrada();
+    void decIncidentesEntrada();
     
     void addEdge(Edge<V,E> *);
     void removeEdge(Edge<V,E> *);
@@ -66,16 +71,37 @@ std::vector< Edge<V,E> * > * Vertex<V, E>::getEdges()
 }
 
 template <class V, class E>
+int Vertex<V,E>::getIncidentesEntrada()
+{
+    return incidentes_entrada;
+}
+
+template <class V, class E>
+void Vertex<V,E>::incIncidentesEntrada()
+{
+    ++incidentes_entrada;
+}
+
+template <class V, class E>
+void Vertex<V,E>::decIncidentesEntrada()
+{
+    --incidentes_entrada;
+}
+
+template <class V, class E>
 void Vertex<V,E>::addEdge(Edge<V,E> * edge)
 {
     edges.push_back(edge);
+    edge->getTarget()->incIncidentesEntrada();
 }
 
 template <class V, class E>
 void Vertex<V,E>::removeEdge(Edge<V,E> * edge)
 {
     auto to_delete = find(edges.begin(), edges.end(), edge);
+    edge->getTarget()->decIncidentesEntrada();
     edges.erase(to_delete);
+    
 }
 
 template <class V, class E>

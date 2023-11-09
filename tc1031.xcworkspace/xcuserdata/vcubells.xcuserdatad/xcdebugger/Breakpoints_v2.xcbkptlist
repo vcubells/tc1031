@@ -14,8 +14,8 @@
             filePath = "Tema_8_Estructuras_no_lineales/Graph/Graph/Graph.hpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "search(value)"
             landmarkType = "9">
          </BreakpointContent>
@@ -49,6 +49,70 @@
             startingLineNumber = "84"
             endingLineNumber = "84"
             landmarkName = "main(argc, argv)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D13C14AE-35EE-4DB0-8D79-53F0A85D3AC5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tema_8_Estructuras_no_lineales/actividad_4-1/actividad_4-1/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "DFS(graph, u)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "D13C14AE-35EE-4DB0-8D79-53F0A85D3AC5 - 1d651fee18f593d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DFS(std::__1::vector&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt;&gt;, std::__1::allocator&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt;&gt;&gt;&gt;&amp;, int)"
+                  moduleName = "actividad_4-1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vcubells/Developer/GitHub/tc1031/Tema_8_Estructuras_no_lineales/actividad_4-1/actividad_4-1/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "D13C14AE-35EE-4DB0-8D79-53F0A85D3AC5 - 1d651fee18f593d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DFS(std::__1::vector&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt;&gt;, std::__1::allocator&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt;&gt;&gt;&gt;&amp;, int)"
+                  moduleName = "actividad_4-1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vcubells/Developer/GitHub/tc1031/Tema_8_Estructuras_no_lineales/actividad_4-1/actividad_4-1/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "62">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B5E394A-1655-4368-B88F-3B444F8C8F92"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tema_8_Estructuras_no_lineales/actividad_4-1/actividad_4-1/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "loadGraph2(v, e, graph)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

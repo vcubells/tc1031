@@ -50,6 +50,9 @@ int main(int argc, const char * argv[]) {
         std::cout << " El nodo " << "no existe" << std::endl;
     }
     
+    /* Mostrar incidentes de entrada */
+    graph->getIncidentePorVertex();
+    
     /* Eliminar el grafo */
     delete graph;
 

@@ -31,6 +31,8 @@ public:
     Vertex<V, E> * search(const V & );
     Vertex<V, E> * search(const Vertex<V,E> *);
     
+    void getIncidentePorVertex();
+    
     template <class Vn, class En>
     friend std::ostream & operator <<(std::ostream &, const Graph<Vn,En> &);
 };
@@ -105,7 +107,7 @@ Vertex<V, E> * Graph<V,E>::search(const V & value )
     /* Buscar vertex */
     auto node = search(vertex);
     
-    /* Elimiinar el nodo temporal */
+    /* Eliminar el nodo temporal */
     delete vertex;
     
     /* Regresar el nodo encontrado */
@@ -125,6 +127,15 @@ Vertex<V, E> * Graph<V,E>::search(const Vertex<V,E> * value )
     };
     
     return vertex;
+}
+
+template <class V, class E>
+void Graph<V,E>::getIncidentePorVertex()
+{
+    for (auto v : nodes) {
+        std::cout << v->getInfo() << " : " << v->getIncidentesEntrada();
+        std::cout << std::endl;
+    }
 }
 
 template <class V, class E>
