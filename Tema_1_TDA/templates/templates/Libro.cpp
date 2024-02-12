@@ -31,6 +31,17 @@ bool Libro::operator <(Libro & libro)
     // return titulo < libro.titulo
 }
 
+bool Libro::operator >(Libro & libro)
+{
+    return id > libro.id;
+}
+
+bool Libro::operator ==(Libro & libro)
+{
+    return id == libro.id;
+}
+
+
 void Libro::print()
 {
     std::cout << "Id:" << id << std::endl;

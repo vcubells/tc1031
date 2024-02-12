@@ -202,6 +202,9 @@
       location = "group:Tema_1_TDA"
       name = "Tema_1_TDA">
       <FileRef
+         location = "group:tda_db">
+      </FileRef>
+      <FileRef
          location = "group:ejercicio_templates/ejercicio_templates.xcodeproj">
       </FileRef>
       <FileRef

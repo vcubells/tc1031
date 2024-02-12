@@ -20,6 +20,8 @@ public:
     
     /* tipo nombre_funcion (Tipo & nombre_var) */
     bool operator <(Libro & libro);
+    bool operator >(Libro & libro);
+    bool operator ==(Libro & libro);
     
     void print();
     
