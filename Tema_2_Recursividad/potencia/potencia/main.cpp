@@ -45,7 +45,7 @@ long int potencia(int x, int n)
     }
     /* Paso recursivo */
     else {
-        //std::cout << "Calculando " << x <<"^" << n << std::endl;
+        std::cout << "Calculando " << x <<"^" << n << std::endl;
         long int pot = potencia(x, n-1);
         long int res = x * pot;
         std::cout << "Resultado " << x <<"^" << n << " = " << res << std::endl;

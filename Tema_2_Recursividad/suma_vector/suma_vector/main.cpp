@@ -39,6 +39,8 @@ int main(int argc, const char * argv[]) {
     for (int x : v)
             std::cout << x << " ";
     
+    std::cout << std::endl;
+    
     /* Calcular la suma */
     int resultado = suma(v,0,n);
     

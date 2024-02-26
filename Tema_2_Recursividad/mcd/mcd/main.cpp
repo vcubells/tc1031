@@ -39,7 +39,7 @@ int main(int argc, const char * argv[]) {
     }
     while (n < 0);
     
-    /* Calcular la mcd(m,n) */
+    /* Calcular el mcd(m,n) */
     int resultado = mcd(m, n);
     
     /* Mostrar el resultado */

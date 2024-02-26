@@ -17,6 +17,8 @@ int main(int argc, const char * argv[]) {
         Ejemplos:
                 oso, ana, oxxo
                 dabale arroz a la zorra el abad ->
+                dabalearrozalazorraelabad -> dabale....
+     
      */
     
     std::string cadena;
