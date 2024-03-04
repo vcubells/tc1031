@@ -10,6 +10,7 @@
 #include <vector>
 #include "../../../Tema_5_Ordenamiento/ordenamiento_generico/ordenamiento_generico/Ordenamiento.hpp"
 #include "Busqueda.hpp"
+#include "Persona.hpp"
 
 int genera_int()
 {
@@ -20,6 +21,18 @@ float genera_float()
 {
     return rand() % 100 * 0.5;
 }
+
+/* TODO */
+Persona genera_persona()
+ {
+    /* Generar un número aleatorio entre 1 y 100 */
+    int age = rand() % 100 + 1;
+    
+    std::string name = "Persona " + std::to_string(age);
+    std::string lastname = "Apellido " + std::to_string(age);
+    
+    return Persona(name, lastname, age);
+ }
 
 template <typename T>
 std::vector<T> crea_vector(T(* genera)())
@@ -62,11 +75,23 @@ void buscar(
 //    }
         
     std::cout << std::endl;
+    T valor;
+    int age;
+    std::cout << "Entra la edad de la persona que quieres buscar?: ";
+    std::cin >> age;
+    valor = Persona("", "", age);
     
     /* Obtener elemento a buscar */
-    T valor;
-    std::cout << "¿Qué elemento quieres buscar?: ";
-    std::cin >> valor;
+    /*if (strcmp(typeid(T).name(),"Persona") == 0)
+    {
+        int age;
+        std::cout << "Entra la edad de la persona que quieres buscar?: ";
+        valor = Persona("", "", age);
+    }
+    else {
+        std::cout << "¿Qué elemento quieres buscar?: ";
+        std::cin >> valor;
+    }*/
     
     int resultado = algoritmo(elementos, valor);
     
@@ -87,10 +112,15 @@ int main(int argc, const char * argv[]) {
     srand((int) time(nullptr));
     
     /* Búsqueda secuencial de números enteros */
-    buscar<int>(genera_int, Busqueda<int>::busquedaSecuencial);
+    //buscar<int>(genera_int, Busqueda<int>::busquedaSecuencial);
     
     /* Búsqueda binaria de números punto flotante */
-    buscar<float>(genera_float, Busqueda<float>::busquedaBinaria, true);
+    //buscar<float>(genera_float, Busqueda<float>::busquedaBinaria, true);
+    
+    /* Búsqueda binaria sobre un objeto definido */
+    /* TODO */
+    //buscar<Persona>(genera_persona, Busqueda<Persona>::busquedaBinaria, true);
+    buscar<Persona>(genera_persona, Busqueda<Persona>::busquedaSecuencial);
     
     return 0;
 }

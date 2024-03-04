@@ -22,6 +22,10 @@ bool desc(T a, T b)
     return a > b;
 }
 
+/*
+ O(n^2)
+ M(n^2)
+ */
 template <class T>
 void burbuja(T v[], int n, bool compara(T,T) )
 {
@@ -42,6 +46,10 @@ void burbuja(T v[], int n, bool compara(T,T) )
     }
 }
 
+/*
+ O(n^2)
+ M(n)
+ */
 template <class T>
 void insercion(T numbers[], int n, bool compara(T,T))
 {
@@ -171,7 +179,7 @@ int main(int argc, const char * argv[]) {
             burbuja(vector, N, desc);
             break;
         case 'I':
-            insercion(vector, N, desc);
+            insercion(vector, N, asc);
             break;
         case 'S':
             seleccion(vector, N, asc);
