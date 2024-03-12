@@ -68,6 +68,9 @@
       location = "group:Retos"
       name = "Retos">
       <FileRef
+         location = "group:ejercicio1-2b/ejercicio1-2b.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:actividad1_1/actividad1_1.xcodeproj">
       </FileRef>
       <FileRef

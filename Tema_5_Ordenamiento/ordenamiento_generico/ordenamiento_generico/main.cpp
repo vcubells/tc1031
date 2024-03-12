@@ -82,10 +82,15 @@ int main(int argc, const char * argv[]) {
     
     ordena<float>(genera_float, Ordenamiento<float>::insercion, Ordenamiento<float>::desc);
     
+    /* Ordenar personas por la edad */
+    std::cout << "- Ordenamiento de personas por la edad -" << std::endl;
+    
+    ordena<Persona>(genera_persona, Ordenamiento<Persona>::seleccion, Persona::edad_desc);
+    
     /* Ordenar personas por el nombre */
     std::cout << "- Ordenamiento de personas por el nombre -" << std::endl;
     
-    ordena<Persona>(genera_persona, Ordenamiento<Persona>::seleccion, Persona::edad_desc);
+    ordena<Persona>(genera_persona, Ordenamiento<Persona>::mergesort, Ordenamiento<Persona>::asc);
     
     /* Ordenar números enteros con QuickSort */
       std::cout << "- Ordenamiento de números enteros con QuickSort -" << std::endl;
