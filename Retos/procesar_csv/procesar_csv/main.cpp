@@ -60,7 +60,7 @@ auto read_csv_strings(std::string filename)
                 
 auto read_csv_persona(std::string filename)
 {
-    /* Crear un vector de vector de strings */
+    /* Crear un vector de vector de personas */
     std::vector< Persona > lineas;
 
     /* Crear un input filestream para leer el archivo CSV */

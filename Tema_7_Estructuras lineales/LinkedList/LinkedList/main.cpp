@@ -163,6 +163,14 @@ int main(int argc, const char * argv[]) {
     /* Obtener tamaño de la lista */
     std::cout << "(S) Tamaño de la lista: " << list->size() << " elementos" << std::endl;
     
+    /* Recorrer la lista con un Iterador */
+    std::cout << "(L) Recorrido de la lista con el iterador: " << std::endl;
+    
+    for (auto it : *list) {
+        std::cout << it << " ";
+    }
+    std::cout << std::endl;
+    
     /* Vaciar la lista */
     list->clear();
     std::cout << "(V) Se vació la lista"<< std::endl;
