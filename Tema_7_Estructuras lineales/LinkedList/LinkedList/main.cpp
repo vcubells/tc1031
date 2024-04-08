@@ -287,6 +287,10 @@ int main(int argc, const char * argv[]) {
     delete sortedlist;
     std::cout << "(D) Se liberó la memoria de la lista ordenada" << std::endl;
     
+    /* TODO
+     Poner casos de prueba de cada uno de los métodos programados en la Actividad 2.1
+     
+     */
     
     return 0;
 }

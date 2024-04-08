@@ -109,6 +109,18 @@ public:
     /* Eliminar un rango de elementos */
     void deleteRange(int, int);
     
+    /* Obtener un subconjunto de elementos de la lista a partir de un rango */
+    LinkedList<T> * subList(int, int);
+    
+    /* Obtener la unión de dos listas */
+    LinkedList<T> * Union(LinkedList<T> * );
+    
+    /* Obtener la intersección de dos listas */
+    LinkedList<T> * Intersection(LinkedList<T> * );
+    
+    /* Obtener la diferencia de dos listas */
+    LinkedList<T> * Except(LinkedList<T> * );
+    
 };
 
 template <class T>
@@ -500,6 +512,34 @@ void LinkedList<T>::deleteRange(int from, int to)
     for (int i = to; i >= from; --i) {
         delete this->remove(i);
     }
+}
+
+/* Obtener un subconjunto de elementos de la lista a partir de un rango */
+template <class T>
+LinkedList<T> * LinkedList<T>::subList(int from, int to)
+{
+    //TODO Actividad 2.1
+}
+
+/* Obtener la unión de dos listas */
+template <class T>
+LinkedList<T> * LinkedList<T>::Union(LinkedList<T> * listB)
+{
+    //TODO Actividad 2.1
+}
+
+/* Obtener la intersección de dos listas */
+template <class T>
+LinkedList<T> * LinkedList<T>::Intersection(LinkedList<T> * listB)
+{
+    //TODO Actividad 2.1
+}
+
+/* Obtener la diferencia de dos listas */
+template <class T>
+LinkedList<T> * LinkedList<T>::Except(LinkedList<T> * listB)
+{
+    //TODO Actividad 2.1
 }
 
 #endif /* LinkedList_hpp */
