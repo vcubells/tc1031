@@ -43,6 +43,9 @@ int main(int argc, const char * argv[]) {
     std::cout << "(D) Liberando la memoria ocupada por el nodo eliminado" << std::endl;
     delete node;
     
+    /* Obtener tamaño de la cola */
+    std::cout << "(S) Tamaño de la cola: " << queue->size() << " elementos" << std::endl;
+    
     /* Visualizar el contenido de la cola */
     std::cout << "(L) La cola tiene los siguientes elementos:" << std::endl;
     std::cout << *queue << std::endl;

@@ -46,6 +46,9 @@
       location = "group:Tema_7_Estructuras lineales"
       name = "Tema_7_Estructuras lineales">
       <FileRef
+         location = "group:ejercicio_3/ejercicio_3.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:ejercicio_2/ejercicio_2.xcodeproj">
       </FileRef>
       <FileRef
