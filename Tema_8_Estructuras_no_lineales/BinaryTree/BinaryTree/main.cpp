@@ -82,6 +82,11 @@ int main(int argc, const char * argv[]) {
     tree->postOrden();
     std::cout << std::endl;
     
+    std::cout << "(S) Buscar un valor en el árbol" << std::endl;
+    TreeNode<int> * found = tree->search(10);
+    std::cout << (found ? "(S) El valor buscado si se encuentra" : "(S) El valor buscado no se encuentra") << std::endl;
+    std::cout << std::endl;
+    
     std::cout << "(L) Se imprimen los nodos hojas del árbol" << std::endl;
     tree->printLeaf();
     std::cout << std::endl;

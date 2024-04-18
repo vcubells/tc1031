@@ -54,7 +54,9 @@ public:
     
     void bfs();
     void bfs(TreeNode<T> *);
-    
+     
+    TreeNode<T> * search(T value) const;
+    TreeNode<T> * search(T value, TreeNode<T> *) const;
 };
 
 template <class T>
@@ -318,4 +320,35 @@ void BinaryTree<T>::bfs(TreeNode<T> * node)
     }
 }
 
+
+/* Búsqueda en un árbol */
+template <class T>
+TreeNode<T> * BinaryTree<T>::search(T value) const
+{
+    return search(value, this->root);
+}
+
+template <class T>
+TreeNode<T> *  BinaryTree<T>::search(T value, TreeNode<T> * node) const
+{
+    TreeNode<T> * found = nullptr;
+    
+    if (node != nullptr) {
+        /* Procesar el nodo */
+        if (node->getInfo() == value) {
+            return node;
+        }
+        else {
+            /* Desplazarse a la izquierda */
+            found = search(value, node->getLeft() );
+            
+            /* Desplazarse a la derecha */
+            if (!found) {
+                found = search(value, node->getRight() );
+            }
+        }
+    }
+    
+    return found;
+}
 #endif /* BinaryTree_hpp */
