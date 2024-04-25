@@ -223,6 +223,24 @@ int main(int argc, const char * argv[]) {
     bst->bfs();
     std::cout << std::endl;
     
+    /* BEGIN TODO Actividad 3.1 */
+    
+    /* Determinar si el BST es o no un BST */
+    std::cout << (bst->isBST() ? "(V) El árbol es un BST" : "(V) El árbol no es un BST") << std::endl;
+    
+    /* Determinar la altura de un BST */
+    std::cout << "(H) La altura del arbol es: " << bst->height() << std::endl;
+    
+    /* Obtener los ancestros de un nodo */
+    int value = 8;
+    std::cout << "(A) Los ancestros de " << value << " son : " << std::endl;
+    bst->ancestors(value);
+    
+    /* Determinar la cantidad de nodos de un BST */
+    std::cout << "(#) La cantidad de nodos del árbol es: " << bst->count() << std::endl;
+    
+    /* END TODO Actividad 3.1 */
+    
     std::cout << "(C) Se eliminan todos los nodos del árbol" << std::endl;
     bst->clear();
     

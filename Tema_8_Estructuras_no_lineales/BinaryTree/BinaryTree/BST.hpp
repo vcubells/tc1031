@@ -29,6 +29,15 @@ public:
     TreeNode<T> * remove(T &);
     TreeNode<T> * remove(TreeNode<T> *);
     
+    /* BEGIN TODO Actividad 3.1 */
+    
+    bool isBST() const;
+    int height() const;
+    void ancestors(T &) const;
+    int count() const;
+    
+    /* END TODO Actividad 3.1 */
+    
     
     
 private:
@@ -216,5 +225,37 @@ TreeNode<T> * BST<T>::remove(TreeNode<T> * node)
     
     return node;
 }
+
+/* BEGIN TODO Actividad 3.1 */
+
+/* Determinar si un àrbol es un BST */
+template <class T>
+bool BST<T>::isBST() const
+{
+    return true;
+}
+
+/* Obtener la altura del árbol */
+template <class T>
+int BST<T>::height() const
+{
+    return 0;
+}
+
+/* Visualizar los ancestros de un nodo */
+template <class T>
+void BST<T>::ancestors(T &) const
+{
+    
+}
+
+/* Obtener la cantidad de nodos del árbol */
+template <class T>
+int BST<T>::count() const
+{
+    return 0;
+}
+
+/* END TODO Actividad 3.1 */
 
 #endif /* BST_hpp */
