@@ -38,19 +38,32 @@ int main(int argc, const char * argv[]) {
     /* Eliminar un edge */
     graph->removeEdge(a, c, 3);
     
+    /* Adicionar un vértice nuevo */
+    Vertex<char, int> * d = new Vertex<char, int>('D');
+    Vertex<char, int> * e = new Vertex<char, int>('E');
+    
+    /* Adicionar vértices al grafo */
+    graph->addVertex(d);
+    graph->addVertex(e);
+    
+    /* Adicionar aristas al grafo */
+    graph->addEdge(a, d, 10);
+    graph->addEdge(b, e, 20);
+    graph->addEdge(c, e, 30);
+    
     /* Visualizando el grafo */
     std::cout << *graph << std::endl;
     
     /* Buscar un nodo */
-    char value = 'F';
+    char value = 'E';
     
     auto found = graph->search(value);
     
     if (found) {
-        std::cout << " El nodo " << found->getInfo() << " existe" << std::endl;
+        std::cout << "(S) El nodo " << found->getInfo() << " existe" << std::endl;
     }
     else {
-        std::cout << " El nodo " << value << " no existe" << std::endl;
+        std::cout << "(S) El nodo " << value << " no existe" << std::endl;
     }
     
     /* Mostrar incidentes de entrada */
