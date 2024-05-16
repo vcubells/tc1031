@@ -232,7 +232,7 @@ int main(int argc, const char * argv[]) {
     std::cout << "(H) La altura del arbol es: " << bst->height() << std::endl;
     
     /* Obtener los ancestros de un nodo */
-    int value = 8;
+    int value = 15;
     std::cout << "(A) Los ancestros de " << value << " son : " << std::endl;
     bst->ancestors(value);
     

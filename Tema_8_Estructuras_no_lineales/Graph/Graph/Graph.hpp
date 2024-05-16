@@ -118,13 +118,17 @@ template <class V, class E>
 Vertex<V, E> * Graph<V,E>::search(const Vertex<V,E> * value )
 {
     /* Buscar vertex */
-    auto node = find(nodes.begin(), nodes.end(), value);
-    
+    //auto node = find(nodes.begin(), nodes.end(), value);
+    bool found = false;
     Vertex<V,E> * vertex = nullptr;
     
-    if (node != nodes.end()) {
-        vertex = (*node);
-    };
+    for (auto n : nodes) {
+        if (*n == *value) {
+            found = true;
+            vertex = n;
+            break;
+        }
+    }
     
     return vertex;
 }

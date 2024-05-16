@@ -32,6 +32,9 @@ int main(int argc, const char * argv[]) {
     /* Visualizando el grafo */
     std::cout << *graph << std::endl;
     
+    /* Mostrar incidentes de entrada */
+    graph->getIncidentePorVertex();
+    
     /* Eliminar un edge */
     graph->removeEdge(a, c, 3);
     
@@ -39,15 +42,15 @@ int main(int argc, const char * argv[]) {
     std::cout << *graph << std::endl;
     
     /* Buscar un nodo */
-    char value = 'C';
+    char value = 'F';
     
-    auto found = graph->search(c);
+    auto found = graph->search(value);
     
     if (found) {
-        std::cout << " El nodo " << "existe" << std::endl;
+        std::cout << " El nodo " << found->getInfo() << " existe" << std::endl;
     }
     else {
-        std::cout << " El nodo " << "no existe" << std::endl;
+        std::cout << " El nodo " << value << " no existe" << std::endl;
     }
     
     /* Mostrar incidentes de entrada */
