@@ -35,6 +35,9 @@ public:
     int put(K,V);
     V get(K);
     
+    // TODO Actividad 5.1 Implementar la función remove
+    bool remove (K);
+    
     template <typename Kn, typename Vn>
     friend std::ostream & operator <<(std::ostream & os, const HashMapList<Kn,Vn> & hm);
 };
@@ -82,6 +85,7 @@ int HashMapList<K,V>::capacity() const
 template <class K, class V>
 int HashMapList<K,V>::hash_function(K key) const
 {
+    // TODO Actividad 5.1 Cambiar la función hash
     return key % this->_capacity;
 }
 
@@ -124,6 +128,13 @@ V HashMapList<K,V>::get(K key)
     }
     
     return -1;
+}
+
+template <class K, class V>
+bool HashMapList<K,V>::remove(K key)
+{
+    // TODO Actividad 5.1 Implementar la función remove
+    return false;
 }
 
 template <class K, class V>

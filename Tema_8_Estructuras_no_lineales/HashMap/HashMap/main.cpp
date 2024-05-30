@@ -41,6 +41,17 @@ int main(int argc, const char * argv[]) {
     std::cout << "(L) Mostrar el  contenido de la tabla" << std::endl;
     std::cout << *tabla << std::endl;
     
+    /* CASO DE PRUEBA ACTIVIDAD 5.1 */
+    /* Eliminar elementos de la tabla */
+    std::cout << "(R) Se eliminan valores a partir de sus llaves" << std::endl;
+    std::cout << "(R) Se elimina el valor de la llave 5 es: " << tabla->remove(5) << std::endl;
+    std::cout << "(R) Se elimina el valor de la llave 15 es: "<< tabla->remove(15) << std::endl;
+    std::cout << "(R) Se elimina el  valor de la llave 8 es: "<< tabla->remove(8) << std::endl;
+    
+    /* Mostrar contenido de la tabla */
+    std::cout << "(L) Mostrar el  contenido de la tabla después de eliminar elementos" << std::endl;
+    std::cout << *tabla << std::endl;
+    
     /* Eliminar la tabla */
     std::cout << "(D) Se elimina la tabla y se libera la memoria" << std::endl << std::endl;
     delete tabla;
@@ -69,6 +80,17 @@ int main(int argc, const char * argv[]) {
     /* Mostrar contenido de la tabla */
     std::cout << "(L) Mostrar el  contenido de la tabla" << std::endl;
     std::cout << *hml << std::endl;
+    
+    /* CASO DE PRUEBA ACTIVIDAD 5.1 */
+    /* Eliminar elementos de la tabla */
+    std::cout << "(R) Se eliminan valores a partir de sus llaves" << std::endl;
+    std::cout << "(R) Se elimina el valor de la llave 5 es: " << hml->remove(5) << std::endl;
+    std::cout << "(R) Se elimina el valor de la llave 15 es: "<< hml->remove(11) << std::endl;
+    std::cout << "(R) Se elimina el  valor de la llave 8 es: "<< hml->remove(40) << std::endl;
+    
+    /* Mostrar contenido de la tabla */
+    std::cout << "(L) Mostrar el  contenido de la tabla después de eliminar elementos" << std::endl;
+    std::cout << *tabla << std::endl;
     
     /* Eliminar la tabla */
     std::cout << "(D) Se elimina la tabla y se libera la memoria" << std::endl << std::endl;

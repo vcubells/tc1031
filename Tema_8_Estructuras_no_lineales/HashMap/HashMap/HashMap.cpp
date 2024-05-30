@@ -33,6 +33,9 @@ public:
     int rehash(int, int);
     V get(K);
     
+    // TODO Actividad 5.1 Implementar la función remove
+    bool remove(K);
+    
     template <typename Kn, typename Vn>
     friend std::ostream & operator <<(std::ostream & os, const HashMap<Kn,Vn> & hm);
 };
@@ -79,6 +82,7 @@ int HashMap<K,V>::capacity() const
 template <class K, class V>
 int HashMap<K,V>::hash_function(K key) const
 {
+    // TODO Actividad 5.1 Cambiar la función hash
     return key % this->_capacity;
 }
 
@@ -158,6 +162,13 @@ V HashMap<K,V>::get(K key)
     if (found) return this->_values[indice];
     else
         return -1;
+}
+
+template <class K, class V>
+bool HashMap<K,V>::remove(K key)
+{
+    // TODO Actividad 5.1 Implementar la función remove
+    return false;
 }
 
 template <class K, class V>
