@@ -32,7 +32,7 @@ public:
     int size() const;
     int capacity() const;
     
-    bool put(K,V);
+    int put(K,V);
     V get(K);
     
     template <typename Kn, typename Vn>
@@ -86,7 +86,7 @@ int HashMapList<K,V>::hash_function(K key) const
 }
 
 template <class K, class V>
-bool HashMapList<K,V>::put(K key,V value)
+int HashMapList<K,V>::put(K key,V value)
 {
     int indice = hash_function(key);
 
@@ -101,7 +101,7 @@ bool HashMapList<K,V>::put(K key,V value)
     
     this->_size++;
         
-    return true;
+    return indice;
 }
 
 template <class K, class V>

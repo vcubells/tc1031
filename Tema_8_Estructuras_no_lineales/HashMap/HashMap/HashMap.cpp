@@ -29,7 +29,7 @@ public:
     int size() const;
     int capacity() const;
     
-    bool put(K,V);
+    int put(K,V);
     int rehash(int, int);
     V get(K);
     
@@ -83,10 +83,10 @@ int HashMap<K,V>::hash_function(K key) const
 }
 
 template <class K, class V>
-bool HashMap<K,V>::put(K key,V value)
+int HashMap<K,V>::put(K key,V value)
 {
     if (this->_size == this->_capacity) {
-        return false;
+        return -1;
     }
     
     int indice = hash_function(key);
@@ -101,10 +101,10 @@ bool HashMap<K,V>::put(K key,V value)
         this->_status[indice] = "ocupado";
         this->_size++;
         
-        return true;
+        return indice;
     }
     
-    return false;
+    return -1;
 }
 
 template <class K, class V>
