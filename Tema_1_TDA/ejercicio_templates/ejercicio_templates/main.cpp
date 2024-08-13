@@ -9,6 +9,8 @@
 #include "Array.hpp"
 #include "Libro.hpp"
 
+using namespace vcn;
+
 template <class V>
 void comun(Array<V>);
 
@@ -32,7 +34,7 @@ int main(int argc, const char * argv[]) {
     
     /* Posible opción  parametrizada con el uso del operador typeof */
 
-    con_parametros(argc, argv);
+    //con_parametros(argc, argv);
     
     return 0;
 }

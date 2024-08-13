@@ -74,8 +74,6 @@ int main(int argc, const char * argv[]) {
     /* Calcular la potencia de x a la n */
     long int resultado = potencia(x, n);   //x^n x**n
     
-    
-    
     /* Mostrar el resultado */
     std::cout << x << "^" << n << " = " << resultado << std::endl;
     

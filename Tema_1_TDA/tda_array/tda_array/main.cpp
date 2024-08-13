@@ -27,6 +27,8 @@ int main(int argc, const char * argv[]) {
     arreglo.insertar(4);
     arreglo.insertar(5);
     
+
+    
     /* Insertar un elemento cuando el arreglo está lleno */
     arreglo.insertar(6);
     

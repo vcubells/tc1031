@@ -13,6 +13,7 @@
 #define MAX 5
 
 /* Declaración de la clase template */
+namespace vcn {
 
 template <class T>
 class Array
@@ -71,7 +72,7 @@ T Array<T>::eliminar()
     else {
         std::cout << "El arreglo está vacío, no se puede borrar un elemento" << std::endl;
     }
-        
+    
     return item;
 }
 
@@ -94,8 +95,6 @@ void Array<T>::imprimir()
         std::cout << datos[i] << std::endl;
         //operator<<(std::cout, datos[i]);
     }
-}
-
-
+}}
 
 #endif /* Array_hpp */
