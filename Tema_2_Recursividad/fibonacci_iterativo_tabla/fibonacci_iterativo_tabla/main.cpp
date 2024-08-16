@@ -20,17 +20,19 @@
 int fibonacci(int n)
 {
     /* Definir una tabla temporal */
-    std::vector<int> tabla(n);
+    std::vector<int> tabla(n);                // 1        | 1(1)
     
-    tabla[0] = 0;
-    tabla[1] = 1;
+    tabla[0] = 0;                             // 2         | 2(1)
+    tabla[1] = 1;                             // 2         | 2(1)
     
-    for (int i = 2; i <= n; ++i) {
-        tabla[i] = tabla[i-1] + tabla[i-2];
+    for (int i = 2; i <= n; ++i) {            // 1 + 1 + 1  | 1(1) + 1 (n+1) + 1 (n)
+        tabla[i] = tabla[i-1] + tabla[i-2];   // 7          | 7(n)
     }
     
-    return tabla[n];
-}
+    return tabla[n];                           // 2         | 2(1)
+}                                              //       T(n) = 1 + 2 + 2 + 1 + n + 1 + n + 7n + 2
+                                                //      T(n) = 9n + 9
+                                                //      O(n)
 
 int main(int argc, const char * argv[]) {
     int n = 0;

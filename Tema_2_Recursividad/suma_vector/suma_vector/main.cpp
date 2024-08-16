@@ -10,14 +10,16 @@
 #include <vector>
 
 int suma_iterativa(std::vector<int> v)
-{
-    int total = 0;
-    for (int i = 0; i < v.size(); ++i) {
-    // for (int i = N-1; i >=0 N; —i) {
-        total += v[i];
+{                                           //  OE          |  p
+    int total = 0;                          //   1          |  1(1)
+    for (int i = 0; i < v.size(); ++i) {    //  1 + 1+ 1    |  1(1) + 1(n+1) + 1(n)
+        total += v[i];                      //  3           |  3(n)
     }
-    return total;
-}
+    return total;                           //  1           |   1(1)
+}                                           //          T(n) = 1(1) + 1(1) + 1(n+1) + 1(n) + 3(n) + 1(1)
+                                            //          T(n) = 1 + 1 + n + 1 + n + 3n + 1
+                                            //          T(n) = 5n + 4
+                                            //          O(n) = n
 
 int suma(std::vector<int> v, int pos)
 {
