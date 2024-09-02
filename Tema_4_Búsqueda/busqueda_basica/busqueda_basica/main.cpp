@@ -42,24 +42,25 @@ int busquedaBinaria(int vector[], int N, int valor)
 
 int main(int argc, const char * argv[]) {
     
-    if (argc < 3) {
-        std::cout << "Use: a.out número_buscar algoritmo" << std::endl;
+    if (argc < 4) {
+        std::cout << "Use: a.out número_buscar algoritmo N" << std::endl;
         exit(0);
     }
     
     int numero = atoi(argv[1]);
     char algoritmo = *(argv[2]);
+    int N = atoi(argv[3]);
     int encontrado = 0;
     
     srand((unsigned int) time(NULL));
     
-    const int N = 1000000;
+    //const int N = 1000000;
     
     int vector[N];
     
     /* Inicializar el vector con números aleatorios */
     for (int i = 0; i < N; ++i) {
-        vector[i] = i; // rand() % 10000;
+        vector[i] = i; //rand() % 10000000;
     }
     
     switch (algoritmo) {

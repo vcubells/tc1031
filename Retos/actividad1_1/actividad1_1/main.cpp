@@ -8,36 +8,59 @@
 #include <iostream>
 
 /*
-  T(n) =
-  S(n) =
+  T(n) = 1*1 + 1*1 + 1*(n+1) + 1*n + 2*n + 1*1
+       = 1 + 1 + n + 1 + n + 2n + 1
+       = 4n + 4
+       = O(n)
+  S(n) = 1 + 1 + 1
+       = 3
+       = O(1)
  */
 int sumaInterativa(int n)
-{
-    int suma = 0;
+{                                           // OE           veces
+    int suma = 0;                           // 1            1
     // TODO
-    return suma;
+    for (int i = 1; i <= n; ++i) {          // 1 + 1 + 1    1 + (n + 1) + n
+        suma += i;                          // 2            n
+    }
+    return suma;                            // 1            1
 }
 
 /*
-  T(n) =
-  S(n) =
+  T(n) = 1*n + 1 + 3*(n-1)
+       = n + 1 + 3n - 3
+       = 4n - 2
+       = O(n)
+  S(n) = 1 * n
+        = O(n)
  */
 int sumaRecursiva(int n)
 {
-    int suma = 0;
-    // TODO
-    return suma;
+    // Condición de parada                 // OE            veces
+    if ( n == 1) {                         //  1                n
+        return 1;                          //  1                1
+    }
+    // Paso recursivo
+    else {
+        return n + sumaRecursiva(n-1);     // 3                 n-1
+    }
 }
 
 /*
-  T(n) =
-  S(n) =
+  T(n) = 1*1 + 4*1 + 1*1
+       = 1 + 4 + 1
+       = 6
+       = O(1)
+  S(n) = 2
+       = O(1)
  */
 int sumaDirecta(int n)
-{
-    int suma = 0;
+{                                          // OE            veces
+    int suma = 0;                          // 1                 1
     // TODO
-    return suma;
+    suma = n * (n + 1) / 2;                // 4                 1
+    
+    return suma;                           // 1                 1
 }
 
 int main(int argc, const char * argv[]) {

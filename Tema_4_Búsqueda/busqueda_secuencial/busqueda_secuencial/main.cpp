@@ -11,6 +11,7 @@
 #include "../../../Tema_5_Ordenamiento/ordenamiento_generico/ordenamiento_generico/Ordenamiento.hpp"
 #include "Busqueda.hpp"
 #include "Persona.hpp"
+#include <typeinfo>
 
 int genera_int()
 {
@@ -53,7 +54,8 @@ template <typename T>
 void buscar(
             T(* genera)(),
             int (* algoritmo)(std::vector<T>, T),
-            bool ordena = false
+            bool ordena = false,
+            bool isnum = true
             )
 {
     /* Genera un vector */
@@ -76,22 +78,23 @@ void buscar(
         
     std::cout << std::endl;
     T valor;
-    int age;
+    /*int age;
     std::cout << "Entra la edad de la persona que quieres buscar?: ";
     std::cin >> age;
-    valor = Persona("", "", age);
+    valor = Persona("", "", age); */
     
     /* Obtener elemento a buscar */
-    /*if (strcmp(typeid(T).name(),"Persona") == 0)
+    if (isnum)
     {
-        int age;
-        std::cout << "Entra la edad de la persona que quieres buscar?: ";
-        valor = Persona("", "", age);
-    }
-    else {
         std::cout << "¿Qué elemento quieres buscar?: ";
         std::cin >> valor;
-    }*/
+    }
+    else {
+        int age;
+        std::cout << "Entra la edad de la persona que quieres buscar?: ";
+        std::cin >> age;
+        //valor = Persona("", "", age);
+    }
     
     int resultado = algoritmo(elementos, valor);
     
@@ -112,15 +115,15 @@ int main(int argc, const char * argv[]) {
     srand((int) time(nullptr));
     
     /* Búsqueda secuencial de números enteros */
-    //buscar<int>(genera_int, Busqueda<int>::busquedaSecuencial);
+    buscar<int>(genera_int, Busqueda<int>::busquedaSecuencial);
     
     /* Búsqueda binaria de números punto flotante */
-    //buscar<float>(genera_float, Busqueda<float>::busquedaBinaria, true);
+    buscar<float>(genera_float, Busqueda<float>::busquedaBinaria, true);
     
     /* Búsqueda binaria sobre un objeto definido */
     /* TODO */
-    //buscar<Persona>(genera_persona, Busqueda<Persona>::busquedaBinaria, true);
-    buscar<Persona>(genera_persona, Busqueda<Persona>::busquedaSecuencial);
+    //buscar<Persona>(genera_persona, Busqueda<Persona>::busquedaBinaria, true, false);
+    //buscar<Persona>(genera_persona, Busqueda<Persona>::busquedaSecuencial);
     
     return 0;
 }
