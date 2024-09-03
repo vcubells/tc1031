@@ -9,6 +9,7 @@
 #include <time.h>
 #include "Libro.hpp"
 #include <iterator>
+#include <chrono>
 
 template < class T>
 bool asc(T a, T b)
@@ -29,7 +30,6 @@ bool desc(T a, T b)
 template <class T>
 void burbuja(T v[], int n, bool compara(T,T) )
 {
-    T temp;
     for (int i = 0; i < n; i++)
     {
         for (int j = n-1; j > i; j--)
@@ -72,7 +72,6 @@ template <class T>
 void seleccion(T x[], int n, bool compara(T,T))
 {
     int minimo = 0;
-    T temp;
     
     for(int i = 0; i < n-1; i++)
     {
@@ -120,18 +119,6 @@ void quicksort (T a[], int primero, int ultimo)
 }
 
 template <class T>
-void mergesort (T v[], int l, int n)
-{
-    int m = (n+l)/2;
-    if (n > l)
-    {
-        mergesort (v, l, m);
-        mergesort (v, m+1, n);
-        merge (v, l, m, n);
-    }
-}
-
-template <class T>
 void merge (T v[], int l, int m, int n)
 {
     int i, j, k;
@@ -148,35 +135,58 @@ void merge (T v[], int l, int m, int n)
             v[k] = aux[j--];
 }
 
+template <class T>
+void mergesort (T v[], int l, int n)
+{
+    int m = (n+l)/2;
+    if (n > l)
+    {
+        mergesort (v, l, m);
+        mergesort (v, m+1, n);
+        merge (v, l, m, n);
+    }
+}
+
+
+void menu()
+{
+    std::cout << "Use: a.out algoritmo elementos" << std::endl;
+    std::cout << "algoritmo: (B)urbuja | (I)nserción | (S)elección | (Q)uickSort | (M)ezcla" << std::endl;
+    std::cout << "elementos: Número de elementos del vector" << std::endl;
+}
+
 int main(int argc, const char * argv[]) {
-    if (argc < 2) {
-        std::cout << "Use: a.out algoritmo" << std::endl;
+    if (argc < 3) {
+        menu();
         exit(0);
     }
     
     char algoritmo = *(argv[1]);
+    const int N = atoi(argv[2]);
     
     srand((unsigned int) time(NULL));
     
-    const int N = 10;
-    
+    int vector[N];
     //float vector[N];
-    Libro vector[N];
+    //Libro vector[N];
     
     /* Inicializar el vector con números aleatorios */
     for (int i = 0; i < N; ++i) {
-        vector[i] = Libro(rand() % 1000);
+        vector[i] = rand() % 10000000;
         
     }
     
     /* Imprimir el vector original */
-    std::cout << "----- Inicia Vector original -----" << std::endl;
-    std::copy(vector, vector+N, std::ostream_iterator<Libro>(std::cout, " "));
-    std::cout << "----- Fin Vector original -----" << std::endl;
+    /*std::cout << "----- Inicia Vector original -----" << std::endl;
+    std::copy(vector, vector+N, std::ostream_iterator<int>(std::cout, " "));
+    std::cout << "----- Fin Vector original -----" << std::endl; */
+    
+    /* Tiempo inicial */
+    auto inicio = std::chrono::system_clock::now();
     
     switch (algoritmo) {
         case 'B':
-            burbuja(vector, N, desc);
+            burbuja(vector, N, asc);
             break;
         case 'I':
             insercion(vector, N, asc);
@@ -191,14 +201,24 @@ int main(int argc, const char * argv[]) {
             mergesort(vector, 0, N);
             break;
         default:
-            std::cout << "Use: a.out algoritmo" << std::endl;
+            menu();
             break;
     }
     
+    /* Tiempo final */
+    auto termino = std::chrono::system_clock::now();
+    
+    /* Obtener la diferencia de tiempo entre terminoo e inicio */
+    std::chrono::duration<float, std::milli> duracion = termino - inicio;
+
+    /* Imprimir el tiempo de ejecución del algoritmo */
+    std::cout << "El algoritmo demoró " << duracion.count() << " ms" << std::endl;
+    
     /* Imprimir el vector ordenado */
-    std::cout << "----- Inicia Vector ordenado -----" << std::endl;
-    std::copy(vector, vector+N, std::ostream_iterator<Libro>(std::cout, " "));
+   /* std::cout << "----- Inicia Vector ordenado -----" << std::endl;
+    std::copy(vector, vector+N, std::ostream_iterator<int>(std::cout, " "));
     std::cout << "----- Fin Vector ordenado -----" << std::endl;
+    */
     
     return 0;
 }
