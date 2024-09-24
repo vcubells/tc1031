@@ -516,7 +516,7 @@ LinkedList<T> * LinkedList<T>::subList(int from, int to)
 {
     //TODO Actividad 2.1
     
-    return nullptr;
+    return new LinkedList<T>();
 }
 
 /* Obtener la unión de dos listas */
@@ -524,7 +524,7 @@ template <class T>
 LinkedList<T> * LinkedList<T>::Union(LinkedList<T> * listB)
 {
     //TODO Actividad 2.1
-    return nullptr;
+    return new LinkedList<T>();
 }
 
 /* Obtener la intersección de dos listas */
@@ -532,7 +532,7 @@ template <class T>
 LinkedList<T> * LinkedList<T>::Intersection(LinkedList<T> * listB)
 {
     //TODO Actividad 2.1
-    return nullptr;
+    return new LinkedList<T>();
 }
 
 /* Obtener la diferencia de dos listas */
@@ -540,7 +540,7 @@ template <class T>
 LinkedList<T> * LinkedList<T>::Except(LinkedList<T> * listB)
 {
     //TODO Actividad 2.1
-    return nullptr;
+    return new LinkedList<T>();
 }
 
 #endif /* LinkedList_hpp */

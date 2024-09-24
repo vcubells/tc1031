@@ -296,7 +296,7 @@ int main(int argc, const char * argv[]) {
     
     /* Trabajo con una LinkedList */
     std::cout << std::endl;
-    std::cout << "--- Demostración de funciones de la LinkedList  Actividad 2.1 ---" << std::endl;
+    std::cout << "---  Actividad 2.1 - Demostración de funciones de la LinkedList  ---" << std::endl;
     std::cout << std::endl;
     
     /* Crear una lista */
@@ -346,15 +346,15 @@ int main(int argc, const char * argv[]) {
     LinkedList<int> * except = list_task->Except(sublist);
     
     /* Mostrar el contenido de la lista except */
-    std::cout << "(U) La lista Except tiene los siguientes elementos: " << std::endl;
+    std::cout << "(E) La lista Except tiene los siguientes elementos: " << std::endl;
     std::cout << *except<< std::endl;
     
     /* Obtener la intersección de dos listas */
-    std::cout << "(E) Se crea la intersección de dos listas" << std::endl;
+    std::cout << "(I) Se crea la intersección de dos listas" << std::endl;
     LinkedList<int> * intersection = list_task->Intersection(sublist);
     
     /* Mostrar el contenido de la lista intersection */
-    std::cout << "(U) La lista Intersection tiene los siguientes elementos: " << std::endl;
+    std::cout << "(I) La lista Intersection tiene los siguientes elementos: " << std::endl;
     std::cout << *except<< std::endl;
     
    /* Liberar la memoria de las listas */
