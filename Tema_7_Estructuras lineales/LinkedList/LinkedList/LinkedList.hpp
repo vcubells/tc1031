@@ -506,12 +506,8 @@ LinkedList<T> * LinkedList<T>::clone()
 /* Eliminar un rango de elementos */
 template <class T>
 void LinkedList<T>::deleteRange(int from, int to)
-{
-    /* Validar que los índices estén en el rango correcto */
-    
-    for (int i = to; i >= from; --i) {
-        delete this->remove(i);
-    }
+{    
+    //TODO Actividad 2.1
 }
 
 /* Obtener un subconjunto de elementos de la lista a partir de un rango */
