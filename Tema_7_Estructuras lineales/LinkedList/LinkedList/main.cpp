@@ -107,7 +107,6 @@ int main(int argc, const char * argv[]) {
     
     /* Obtener el nodo que está en una posición [] */
     at = list->operator[](3);
-        
     if (at != nullptr) {
         std::cout << "(P) El nodo que se encuentra en la posición 3 es el: " << *at << std::endl;
     }
@@ -215,6 +214,9 @@ int main(int argc, const char * argv[]) {
     std::cout << "(I) Se inserta el 4" << std::endl;
     sortedlist->insert(4);
     
+    /* No se puede acceder a métodos privados para que el usuario no desordene la lista */
+    //sortedlist->insert_front(10);
+    
     /* Mostrar el contenido de la lista */
     std::cout << "(L) La lista ordenada tiene los siguientes elementos: " << std::endl;
     std::cout << *sortedlist << std::endl;
@@ -291,6 +293,76 @@ int main(int argc, const char * argv[]) {
      Poner casos de prueba de cada uno de los métodos programados en la Actividad 2.1
      
      */
+    
+    /* Trabajo con una LinkedList */
+    std::cout << std::endl;
+    std::cout << "--- Demostración de funciones de la LinkedList  Actividad 2.1 ---" << std::endl;
+    std::cout << std::endl;
+    
+    /* Crear una lista */
+    std::cout << "(C) Se crea una lista vacía" << std::endl;
+    LinkedList<int> * list_task = new LinkedList<int>();
+    
+    /* Insertar elementos en la lista */
+    std::cout << "(I) Insertar elementos en la lista" << std::endl;
+    for (int i=0; i < 15; ++i) {
+        list_task->insert(i, rand() % 10);
+    }
+    
+    /* Mostrar el contenido de la lista */
+    std::cout << "(L) La lista tiene los siguientes elementos: " << std::endl;
+    std::cout << *list_task << std::endl;
+    
+    /* Eliminar un rango de elementos de la lista */
+    std::cout << "(R) Se eliminaron los elementos del 1 al 4" << std::endl;
+    list_task->deleteRange(1, 4);
+    
+    /* Mostrar el contenido de la lista */
+    std::cout << "(L) La lista tiene los siguientes elementos: " << std::endl;
+    std::cout << *list_task << std::endl;
+    
+    /* Obtener una sublist */
+    std::cout << "(S) Se crea una sublista con los elementos del 1 al 4" << std::endl;
+    LinkedList<int> * sublist = list_task->subList(1, 4);
+    
+    /* Mostrar el contenido de la lista */
+    std::cout << "(L) La lista tiene los siguientes elementos: " << std::endl;
+    std::cout << *list_task << std::endl;
+    
+    /* Mostrar el contenido de la lista */
+    std::cout << "(S) La sublista tiene los siguientes elementos: " << std::endl;
+    std::cout << *sublist << std::endl;
+    
+    /* Obtener la union de dos listas */
+    std::cout << "(U) Se crea la unión de dos listas" << std::endl;
+    LinkedList<int> * union_list = list_task->Union(sublist);
+    
+    /* Mostrar el contenido de la lista union */
+    std::cout << "(U) La lista Union tiene los siguientes elementos: " << std::endl;
+    std::cout << *union_list<< std::endl;
+    
+    /* Obtener la diferencia de dos listas */
+    std::cout << "(E) Se crea la diferencia de dos listas" << std::endl;
+    LinkedList<int> * except = list_task->Except(sublist);
+    
+    /* Mostrar el contenido de la lista except */
+    std::cout << "(U) La lista Except tiene los siguientes elementos: " << std::endl;
+    std::cout << *except<< std::endl;
+    
+    /* Obtener la intersección de dos listas */
+    std::cout << "(E) Se crea la intersección de dos listas" << std::endl;
+    LinkedList<int> * intersection = list_task->Intersection(sublist);
+    
+    /* Mostrar el contenido de la lista intersection */
+    std::cout << "(U) La lista Intersection tiene los siguientes elementos: " << std::endl;
+    std::cout << *except<< std::endl;
+    
+   /* Liberar la memoria de las listas */
+    delete list_task;
+    delete sublist;
+    delete union_list;
+    delete except;
+    delete intersection;
     
     return 0;
 }

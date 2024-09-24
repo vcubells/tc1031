@@ -506,7 +506,7 @@ LinkedList<T> * LinkedList<T>::clone()
 /* Eliminar un rango de elementos */
 template <class T>
 void LinkedList<T>::deleteRange(int from, int to)
-{    
+{
     //TODO Actividad 2.1
 }
 
@@ -515,6 +515,8 @@ template <class T>
 LinkedList<T> * LinkedList<T>::subList(int from, int to)
 {
     //TODO Actividad 2.1
+    
+    return nullptr;
 }
 
 /* Obtener la unión de dos listas */
@@ -522,6 +524,7 @@ template <class T>
 LinkedList<T> * LinkedList<T>::Union(LinkedList<T> * listB)
 {
     //TODO Actividad 2.1
+    return nullptr;
 }
 
 /* Obtener la intersección de dos listas */
@@ -529,6 +532,7 @@ template <class T>
 LinkedList<T> * LinkedList<T>::Intersection(LinkedList<T> * listB)
 {
     //TODO Actividad 2.1
+    return nullptr;
 }
 
 /* Obtener la diferencia de dos listas */
@@ -536,6 +540,7 @@ template <class T>
 LinkedList<T> * LinkedList<T>::Except(LinkedList<T> * listB)
 {
     //TODO Actividad 2.1
+    return nullptr;
 }
 
 #endif /* LinkedList_hpp */
