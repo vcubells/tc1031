@@ -83,12 +83,17 @@ int main(int argc, const char * argv[]) {
     std::cout << std::endl;
     
     std::cout << "(S) Buscar un valor en el árbol" << std::endl;
-    TreeNode<int> * found = tree->search(10);
+    TreeNode<int> * found = tree->search(5);
     std::cout << (found ? "(S) El valor buscado si se encuentra" : "(S) El valor buscado no se encuentra") << std::endl;
     std::cout << std::endl;
     
     std::cout << "(L) Se imprimen los nodos hojas del árbol" << std::endl;
     tree->printLeaf();
+    std::cout << std::endl;
+    
+    std::cout << "(T) Se imprimen los primeros N nodos del árbol" << std::endl;
+    int n = 4;
+    tree->topN(n);
     std::cout << std::endl;
     
     std::cout << "(C) Se eliminan todos los nodos del árbol" << std::endl;
@@ -133,7 +138,7 @@ int main(int argc, const char * argv[]) {
     TreeNode<int> * repetido = new TreeNode<int>(9);
     bool inserted = bst->insert(repetido);
     
-    std::cout << (inserted ? "(I) El valor 9 se insertó" : "(I) El valor 9 ya existe existe") << std::endl;
+    std::cout << (inserted ? "(I) El valor 9 se insertó" : "(I) El valor 9 ya existe") << std::endl;
     
     std::cout << "(V) Se imprime el BST en PreOrden" << std::endl;
     bst->preOrden();
@@ -148,7 +153,7 @@ int main(int argc, const char * argv[]) {
     std::cout << std::endl;
     
     std::cout << "(V) Se imprimen los primeros n elementos en InOrden" << std::endl;
-    int nodos = bst->topN();
+    int nodos = bst->topN(n);
     std::cout << std::endl;
     std::cout << "El BTS tiene " << nodos <<" nodos" << std::endl;
     std::cout << std::endl;

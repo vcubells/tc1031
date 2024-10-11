@@ -9,6 +9,9 @@
 #define ConexionesComputadora_hpp
 
 #include <iostream>
+#include <stack>
+#include <list>
+#include <vector>
 #include "/Users/vcubells/Developer/GitHub/tc1031/Tema_7_Estructuras lineales/LinkedList/LinkedList/LinkedList.hpp"
 #include "/Users/vcubells/Developer/GitHub/tc1031/Tema_7_Estructuras lineales/Stack/Stack/Stack.hpp"
 
@@ -17,13 +20,15 @@ class ConexionesComputadora {
 private:
     std::string ip = "";
     std::string nombre = "";
-    Stack<T> * conexionesEntrantes = new Stack<T>();
-    LinkedList<T> * conexionesSalientes = new LinkedList<T>();
+    std::stack<T> conexionesEntrantes;
+    std::list<T> conexionesSalientes;
+    
     
 public:
     ConexionesComputadora() = default;
     ConexionesComputadora(std::string _ip, std::string _name )
     :ip(_ip), nombre(_name) {};
+    ~ConexionesComputadora();
     
     Stack<T> * getConexionesEntrantes();
     LinkedList<T> * getConexionesSalientes();
@@ -33,20 +38,31 @@ public:
     int totalConexionesEntrantes();
     int totalConexionesSalientes();
     T ultimaConexionEntrante();
-    void tresConexionesConsecutivas();
+    bool tresConexionesConsecutivas();
+    
+    /* Sobrecarga operador << */
+    template <typename Tn>
+    friend std::ostream & operator <<(std::ostream & os, const ConexionesComputadora<Tn> & cc);
 };
+
+template <class T>
+ConexionesComputadora<T>::~ConexionesComputadora()
+{
+    /* Eliminar conexionesEntrantes */
+    /* Eliminar conexionesSalientes */
+}
 
 template <class T>
 void ConexionesComputadora<T>::llenarConexiones(std::vector<T> registros)
 {
     for (auto registro : registros) {
-        if (registro.getIPOrigen() == ip)
+        if (registro.getIpOrigen() == ip)
         {
-            conexionesSalientes->insert_back(registro);
+            conexionesSalientes.push_back(registro);
         }
-        else if (registro.getIPDestino() == ip )
+        else if (registro.getIpDestino() == ip )
         {
-            conexionesEntrantes->push(registro);
+            conexionesEntrantes.push(registro);
         }
     }
 }
@@ -54,26 +70,60 @@ void ConexionesComputadora<T>::llenarConexiones(std::vector<T> registros)
 template <class T>
 int ConexionesComputadora<T>::totalConexionesEntrantes()
 {
-    return conexionesEntrantes->size();
+    return conexionesEntrantes.size();
 }
 
 template <class T>
 int ConexionesComputadora<T>::totalConexionesSalientes()
 {
-    return conexionesSalientes->size();
+    return conexionesSalientes.size();
 }
 
 template <class T>
 T ConexionesComputadora<T>::ultimaConexionEntrante()
 {
-    return conexionesEntrantes->top();
+    return conexionesEntrantes.top();
 }
 
 template <class T>
-void ConexionesComputadora<T>::tresConexionesConsecutivas()
+bool ConexionesComputadora<T>::tresConexionesConsecutivas()
 {
+    if (conexionesSalientes.empty()) { return false; }
     
+    int count = 1;
+    T anterior = *(conexionesSalientes.begin());
+
+    for (T temp : conexionesSalientes) {
+        if (anterior == temp) {
+            count++;
+            if (count == 3) {
+                break;
+            }
+        }
+        else {
+            anterior = temp;
+            count = 1;
+        }
+    }
+    
+    if (count == 3) {
+        return true;
+    }
+    
+    return false;
 }
 
+template <class T>
+std::ostream & operator <<(std::ostream & os, const ConexionesComputadora<T> & cc)
+{
+    os << "IP: " << cc.ip << std::endl;
+    os << "Nombre: " << cc.nombre << std::endl;
+    os << "--- Conexiones entrantes: ---" << std::endl;
+    os << cc.conexionesEntrantes << std::endl;
+    os << "--- Conexiones salientes: ---" << std::endl;
+    os << cc.conexionesSalientes << std::endl;
+    
+    return os;
+}
 
 #endif /* ConexionesComputadora_hpp */

@@ -23,6 +23,19 @@ private:
     
 public:
     Registro() = default;
+    std::string getIpOrigen() {
+        return ipOrigen;
+    }
+    
+    std::string getIpDestino() {
+        return ipDestino;
+    }
+    
+    bool operator ==(const Registro & other);
+    bool operator !=(const Registro & other);
+    
+    friend std::ostream & operator << (std::ostream & os, const Registro & _value);
 };
+
 
 #endif /* Registro_hpp */

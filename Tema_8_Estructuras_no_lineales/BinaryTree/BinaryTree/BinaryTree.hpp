@@ -46,7 +46,7 @@ public:
     void postOrden() const;
     void postOrden(TreeNode<T> *) const;
     
-    int topN() const;
+    int topN(int) const;
     int topN(TreeNode<T> *, int, int) const;
     
     void printLeaf() const;
@@ -130,6 +130,9 @@ void BinaryTree<T>::clear()
     this->root = nullptr;
 }
 
+/*
+ Complejidad: O(n)
+ */
 template <class T>
 void BinaryTree<T>::clear(TreeNode<T> * node)
 {
@@ -147,6 +150,9 @@ void BinaryTree<T>::preOrden() const
     this->preOrden( this->root );
 }
 
+/*
+ Complejidad: O(n)
+ */
 template <class T>
 void BinaryTree<T>::preOrden(TreeNode<T> * node) const
 {
@@ -168,6 +174,9 @@ void BinaryTree<T>::inOrden() const
     this->inOrden( this->root );
 }
 
+/*
+ Complejidad: O(n)
+ */
 template <class T>
 void BinaryTree<T>::inOrden(TreeNode<T> * node) const
 {
@@ -189,6 +198,9 @@ void BinaryTree<T>::postOrden() const
     this->postOrden( this->root );
 }
 
+/*
+ Complejidad: O(n)
+ */
 template <class T>
 void BinaryTree<T>::postOrden(TreeNode<T> * node) const
 {
@@ -206,18 +218,21 @@ void BinaryTree<T>::postOrden(TreeNode<T> * node) const
 
 
 template <class T>
-int BinaryTree<T>::topN() const
+int BinaryTree<T>::topN(int n) const
 {
-    return this->topN( this->root, 4, 0 );
+    return this->topN( this->root, n, 0 );
 }
 
+/*
+ Complejidad: O(n)
+ */
 template <class T>
 int BinaryTree<T>::topN(TreeNode<T> * node, int n, int cont) const
 {
     if (node != nullptr && cont < n) {
         
         /* Desplazarse a la izquierda */
-        cont = topN( node->getRight(), n, cont );
+        cont = topN( node->getLeft(), n, cont );
          
         if (cont < n ) {
             std::cout << *node << " (" << ++cont << ") ";
@@ -225,7 +240,7 @@ int BinaryTree<T>::topN(TreeNode<T> * node, int n, int cont) const
         else return cont;
         
         /* Desplazarse a la derecha */
-        cont = topN( node->getLeft(), n, cont );
+        cont = topN( node->getRight(), n, cont );
     }
     
     return cont;
@@ -238,6 +253,9 @@ void BinaryTree<T>::printLeaf() const
     this->printLeaf( this->root );
 }
 
+/*
+ Complejidad: O(n)
+ */
 template <class T>
 void BinaryTree<T>::printLeaf(TreeNode<T> * node) const
 {
@@ -328,6 +346,11 @@ TreeNode<T> * BinaryTree<T>::search(T value) const
     return search(value, this->root);
 }
 
+/*
+ Complejidad:
+    Mejor caso O(1) Busacamos el  elemento que se encuentra en la raíz
+    Peor caso O(n) Busacamos un elemento que no se encuentra en el árbol
+ */
 template <class T>
 TreeNode<T> *  BinaryTree<T>::search(T value, TreeNode<T> * node) const
 {
