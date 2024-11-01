@@ -5,6 +5,9 @@
       location = "group:Tema_8_Estructuras_no_lineales"
       name = "Tema_8_Estructuras_no_lineales">
       <FileRef
+         location = "absolute:/Users/vcubells/ListaAdyacencia/ListaAdyacencia.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:actividad_5-2/actividad_5-2.xcodeproj">
       </FileRef>
       <FileRef

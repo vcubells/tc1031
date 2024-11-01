@@ -83,8 +83,13 @@ template <class K, class V>
 int HashMap<K,V>::hash_function(K key) const
 {
     // TODO Actividad 5.1 Cambiar la función hash
-    return key % this->_capacity;
+    // return key % this->_capacity;
+    return  key >> 8;
 }
+
+/*
+ 00000000
+ */
 
 template <class K, class V>
 int HashMap<K,V>::put(K key,V value)

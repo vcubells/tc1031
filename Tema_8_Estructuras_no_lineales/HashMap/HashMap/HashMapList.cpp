@@ -86,7 +86,8 @@ template <class K, class V>
 int HashMapList<K,V>::hash_function(K key) const
 {
     // TODO Actividad 5.1 Cambiar la función hash
-    return key % this->_capacity;
+    // return key % this->_capacity;
+    return  (key ^_capacity) >> 8;
 }
 
 template <class K, class V>
